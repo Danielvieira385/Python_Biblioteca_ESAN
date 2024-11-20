@@ -63,7 +63,7 @@ def main():
                 print("Registar Novo Utilizador")
                 rUser.recordUser(
                                 nome = input('\nIndique o nome do Utilizador: '),
-                                password = getpass.getpass('\nO que digitar estará oculto, no final pressione ENTER.'+'\nIndique a password: ' , '*')
+                                password = getpass.getpass('\nO que digitar estará oculto, no final pressione ENTER.'+'\nIndique a password: ')
                                 )
                 
             elif sub_opcao == '1.2':

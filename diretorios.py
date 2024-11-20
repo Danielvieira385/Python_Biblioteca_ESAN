@@ -1,4 +1,4 @@
-dirBooks = "C:/Users/dav9ovr/OneDrive - Bosch Group/15_LESSONS/ESAN - CTeSP Desenvolvimento de Software/Aulas/Algoritmo e Programação/BibliotecaESAN/books_DB.csv"
-dirUsers = "C:/Users/dav9ovr/OneDrive - Bosch Group/15_LESSONS/ESAN - CTeSP Desenvolvimento de Software/Aulas/Algoritmo e Programação/BibliotecaESAN/users_DB.csv"
+dirBooks = "/workspaces/Python_Biblioteca_ESAN/books_DB.csv"
+dirUsers = "/workspaces/Python_Biblioteca_ESAN/users_DB.csv"
 
 passAdmin = "0000"
