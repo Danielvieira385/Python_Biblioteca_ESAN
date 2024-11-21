@@ -6,7 +6,7 @@ import record_users_DB as rUser
 import record_books_DB as rBook
 import search_books as sBook
 
-def limpar_tela():
+def limpar_tela():##
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def exibir_titulo(titulo):
