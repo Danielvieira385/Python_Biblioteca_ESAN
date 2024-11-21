@@ -27,6 +27,7 @@ def recordBook(autor, title_book, genero_book, publish_date):
     # Tenta converter a data de publicação para um inteiro e verifica se é positiva
     try:
         publish_date = int(publish_date)
+        #modificacao para a data nao ser superior ao ano atual
         current_year = datetime.now().year
         if publish_date > 0 and publish_date <= current_year:
             book_info.append(str(publish_date))
