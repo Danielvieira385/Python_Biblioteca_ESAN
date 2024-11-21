@@ -34,8 +34,8 @@ def exibir_menu():
     print("║     [4.1] Histórico por Livro                    ║")
     print("║     [4.2] Histórico por Utilizador               ║")
     print("║ [5] Pesquisa e Consulta                          ║")
-    print("║     [5.1] Pesquisa por Título                    ║")
-    print("║     [5.2] Pesquisa por Autor                     ║")
+    print("║     [5.1] Pesquisa por Autor                     ║")
+    print("║     [5.2] Pesquisa por Título                    ║")
     print("║     [5.3] Aplicar Filtros Específicos            ║")
     print("║ [6] Sistema de Recomendações                     ║")
     print("║ [7] Cópia de Segurança e Carregamento de Dados   ║")
@@ -126,15 +126,15 @@ def main():
             print("\nPesquisa e Consulta")
             sub_opcao = input("Escolha uma sub-opção (5.1, 5.2 ou 5.3): ")
             if sub_opcao == '5.1':
-                print("Pesquisa por Título")
-                title = input('Indique o título da obra: ')
-                books = sBook.search_by_title(title)
-                print("Livros encontrados:", books)  # Adicione esta linha para depuração
-                input("Pressione Enter para continuar...")
-            elif sub_opcao == '5.2':
                 print("Pesquisa por Autor")
                 author = input('Indique o nome do autor: ')
                 books = sBook.search_by_author(author)
+                print("Livros encontrados:", books)  # Adicione esta linha para depuração
+                input("Pressione Enter para continuar...")
+            elif sub_opcao == '5.2':
+                print("Pesquisa por Título")
+                title = input('Indique o título da obra: ')
+                books = sBook.search_by_title(title)
                 print("Livros encontrados:", books)  # Adicione esta linha para depuração
                 input("Pressione Enter para continuar...")
             elif sub_opcao == '5.3':
