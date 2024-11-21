@@ -1,9 +1,11 @@
 import record_books_DB as rb
+import csv
 
 # Filtra a lista de livros pelo título fornecido, seja em maiúsculas ou minúsculas
 def search_by_title(title):
     books = rb.get_all_books()
-    return [book for book in books if book['title_book'] and title.lower() in book['title_book'].lower()]
+    matching_books = [book for book in books if title.lower() in book['title_book'].lower()]
+    return matching_books
 
 # Filtra a lista de livros pelo autor fornecido, seja em maiúsculas ou minúsculas
 def search_by_author(author):

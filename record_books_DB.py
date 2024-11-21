@@ -1,7 +1,10 @@
 import csv
 from datetime import datetime
+import os
 
-dirBooks = "C:\\Users\\Toni\\OneDrive - Universidade de Aveiro\\Projeto Python\\BibliotecaESAN\\books_DB.csv"
+#caminho relativo do ficheiro
+current_dir = os.path.dirname(__file__)
+dirBooks = os.path.join(current_dir, 'books_DB.csv')
 
 def recordBook(autor, title_book, genero_book, publish_date):
     book_info = []
@@ -44,7 +47,6 @@ def recordBook(autor, title_book, genero_book, publish_date):
         book.write(book_info_str + "\n")
         print("Livro inserido na base dados com sucesso!")
 
-# Le todos os livros do csv e retorna uma lista de dicionários
 def get_all_books():
     books = []
     with open(dirBooks, 'r') as file:
