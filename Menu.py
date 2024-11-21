@@ -129,26 +129,26 @@ def main():
                 print("Pesquisa por Título")
                 title = input('Indique o título da obra: ')
                 books = sBook.search_by_title(title)
-                print(books)
+                print("Livros encontrados:", books)  # Adicione esta linha para depuração
                 input("Pressione Enter para continuar...")
             elif sub_opcao == '5.2':
                 print("Pesquisa por Autor")
                 author = input('Indique o nome do autor: ')
                 books = sBook.search_by_author(author)
-                print(books)
+                print("Livros encontrados:", books)  # Adicione esta linha para depuração
                 input("Pressione Enter para continuar...")
             elif sub_opcao == '5.3':
                 print("Aplicar Filtros Específicos")
                 criteria = {
-                    'title': input('Indique o título da obra: '),
-                    'author': input('Indique o nome do autor: '),
-                    'publish_date': input('Indique o ano da publicação: ')
-                }
+                        'title': input('Indique o título da obra: '),
+                        'author': input('Indique o nome do autor: '),
+                        'publish_date': input('Indique o ano da publicação: ')
+                    }
                 remover_vazios = {}
                 for key, value in criteria.items():
-                    if value:
-                        remover_vazios[key] = value
-
+                        if value:
+                            remover_vazios[key] = value
+    
                 criteria = remover_vazios
                 books = sBook.filter_books(criteria)
                 print(books)

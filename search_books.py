@@ -4,6 +4,8 @@ import csv
 # Filtra a lista de livros pelo título fornecido, seja em maiúsculas ou minúsculas
 def search_by_title(title):
     books = rb.get_all_books()
+    print("Todos os livros:", books)  # Adicione esta linha para depuração
+    print("Título pesquisado:", title)  # Adicione esta linha para depuração
     matching_books = [book for book in books if title.lower() in book['title_book'].lower()]
     return matching_books
 
