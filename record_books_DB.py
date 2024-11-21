@@ -28,8 +28,10 @@ def recordBook(autor, title_book, genero_book, publish_date):
     try:
         publish_date = int(publish_date)
         current_year = datetime.now().year
-        if publish_date > 0 and publish_date <= current_year:########## falta continuacao em principio utilizar elif
+        if publish_date > 0 and publish_date <= current_year:
             book_info.append(str(publish_date))
+        elif publish_date > current_year:
+            print("O ano de publicação não pode ser superior ao ano atual.")
         else:
             print("O ano de publicação deve conter 4 digítos.")
     except ValueError:
