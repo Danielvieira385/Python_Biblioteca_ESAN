@@ -48,7 +48,7 @@ def recordBook(autor, title_book, genero_book, publish_date):
         book.write(book_info_str + "\n")
         print("Livro inserido na base dados com sucesso!")
 
-
+#dicionario para a pesquisa.
 def get_all_books():
     books = []
     with open(dirBooks, 'r') as file:
@@ -58,8 +58,9 @@ def get_all_books():
                 book = {
                     'autor': row[0],
                     'title_book': row[1],
-                    'genero_book': row[2],
-                    # 'publish_date': row[3]
+                    'publish_date': row[3]
+                    # 'genero_book': row[2],
+
                 }
                 books.append(book)
     return books
