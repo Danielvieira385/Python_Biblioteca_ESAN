@@ -1,7 +1,6 @@
 import csv
 from datetime import datetime
-
-dirBooks = "C:\\Users\\Toni\\OneDrive - Universidade de Aveiro\\Projeto Python\\BibliotecaESAN\\books_DB.csv"
+import diretorios as dirBooks
 
 def recordBook(autor, title_book, genero_book, publish_date):
     book_info = []
@@ -37,14 +36,14 @@ def recordBook(autor, title_book, genero_book, publish_date):
 
     book_info_str = ",".join(book_info)
 
-    with open(dirBooks, 'a') as book:
+    with open(dirBooks.dirBooks, 'a') as book:
         book.write(book_info_str + "\n")
         print("Livro inserido na base dados com sucesso!")
 
 # Le todos os livros do csv e retorna uma lista de dicionários
 def get_all_books():
     books = []
-    with open(dirBooks, 'r') as file:
+    with open(dirBooks.dirBooks, 'r') as file:
         lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'genero_book', 'publish_date'])
         for row in lista:
             books.append(row)

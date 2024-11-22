@@ -82,7 +82,7 @@ def main():
                 autor = input('\nIndique o nome do autor: ')
                 title_book = input('\nIndique o título da obra: ')
                 publish_date = input('\nIndique o ano da publicação: ')
-                genero_book = input('\nIndique o género da obra: ' + '\nEx: Ação, Comédia, Drama, etc.')
+                genero_book = input('\nEx: Ação, Comédia, Drama, etc.'+'\nIndique o género da obra: ')
 
                 rBook.recordBook(autor, title_book, publish_date, genero_book)
 
