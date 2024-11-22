@@ -88,10 +88,12 @@ def main():
 
             elif sub_opcao == '2.2':
                 print("Remover Livro")
-                # Implementar função de eliminação de livro  
+                titulo = input("Indique o título do livro a ser removido: ")
+                rBook.remover_livro(titulo) 
             elif sub_opcao == '2.3':
                 print("Atualizar Informações de um Livro")
-                # Implementar função de atualização de livro
+                titulo = input("Indique o título do livro a ser atualizado: ")
+                rBook.atualizar_informacoes_livro(titulo)
             else:
                 print("Sub-opção inválida!")
                 
