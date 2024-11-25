@@ -84,7 +84,8 @@ def main():
                 publish_date = input('\nIndique o ano da publicação: ')
                 genero_book = input('\nIndique o género da obra: ' + '\nEx: Ação, Comédia, Drama, etc.')
 
-                rBook.recordBook(autor, title_book, publish_date, genero_book)
+                rBook.recordBook(autor, title_book, genero_book, publish_date)
+
 
             elif sub_opcao == '2.2':
                 print("Remover Livro")
@@ -102,13 +103,17 @@ def main():
             sub_opcao = input("Escolha uma sub-opção (3.1, 3.2 ou 3.3): ")
             if sub_opcao == '3.1':
                 print("Registar Empréstimo")
-                # Implementar função de registo de empréstimo
+                titulo = input("Digite o título do livro que deseja emprestar: ")
+                usuario = input("Digite o nome do usuário que está emprestando o livro: ")
+                rBook.registrar_emprestimo(titulo, usuario)
             elif sub_opcao == '3.2':
                 print("Registar Devolução")
-                # Implementar função de registo de devolução
+                titulo = input("Digite o título do livro que deseja devolver: ")
+                rBook.registrar_devolucao(titulo)
             elif sub_opcao == '3.3':
                 print("Organizar Fila de Espera")
-                # Implementar função de fila de espera
+                titulo = input("Indique o título do livro para organizar a fila de espera: ")
+                rBook.organizar_fila_espera(titulo)
             else:
                 print("Sub-opção inválida!")
                 

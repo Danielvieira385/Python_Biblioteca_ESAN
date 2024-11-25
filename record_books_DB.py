@@ -6,6 +6,8 @@ import time
 #caminho relativo do ficheiro
 current_dir = os.path.dirname(__file__)
 dirBooks = os.path.join(current_dir, 'books_DB.csv')
+dirEmprestimos = os.path.join(current_dir, 'emprestimos_DB.csv')
+dirFilaEspera = os.path.join(current_dir, 'fila_espera_DB.csv')
 
 def recordBook(autor, title_book, genero_book, publish_date):
     book_info = []
@@ -22,31 +24,32 @@ def recordBook(autor, title_book, genero_book, publish_date):
     else:
         print("O título da obra não deve ser um campo em vazio.")
 
-    # Verifica se o genero é uma string não vazia
+    # Verifica se o gênero é uma string não vazia
     if isinstance(genero_book, str) and genero_book:
         book_info.append(genero_book)
     else:
-        print("O género da obra não deve ser um campo em vazio.")
+        print("O gênero da obra não deve ser um campo em vazio.")
 
-    # Tenta converter a data de publicação para um inteiro e verifica se é positiva
+    # Tenta converter a data de publicação para um inteiro e verifica se é válida
     try:
         publish_date = int(publish_date)
-        #modificacao para a data nao ser superior ao ano atual
         current_year = datetime.now().year
-        if publish_date > 0 and publish_date <= current_year:
+        if 1000 <= publish_date <= current_year:
             book_info.append(str(publish_date))
         elif publish_date > current_year:
             print("O ano de publicação não pode ser superior ao ano atual.")
         else:
-            print("O ano de publicação deve conter 4 digítos.")
+            print("O ano de publicação deve ter 4 dígitos e ser positivo.")
     except ValueError:
         print("O ano de publicação deve ser um número inteiro.")
 
-    book_info_str = ",".join(book_info)
+    # Só grava no arquivo se todas as informações forem válidas
+    if len(book_info) == 4:
+        book_info_str = ",".join(book_info)
+        with open(dirBooks, 'a') as book:
+            book.write(book_info_str + "\n")
+            print("Livro inserido na base dados com sucesso!")
 
-    with open(dirBooks, 'a') as book:
-        book.write(book_info_str + "\n")
-        print("Livro inserido na base dados com sucesso!")
 
 #dicionario para a pesquisa.
 def get_all_books():
@@ -54,13 +57,14 @@ def get_all_books():
     with open(dirBooks, 'r') as file:
         lista = csv.reader(file)
         for row in lista:
-            if len(row) == 3:  # Certifique-se de que a linha tem 4 elementos
+            if len(row) == 4:
                 book = {
                     'autor': row[0],
                     'title_book': row[1],
                     'genero_book': row[2],
-                    # 'publish_date': row[3]
+                    'publish_date': row[3]
                 }
+
                 books.append(book)
             else:
                 print(f"Erro, livros disponiveis: {row}")
@@ -158,3 +162,92 @@ def atualizar_informacoes_livro(titulo):
         print("\n")
 
 
+def registrar_emprestimo(titulo, usuario):
+    livro_encontrado = False
+
+    # Carregar a lista de livros para verificar disponibilidade
+    with open(dirBooks, 'r') as file:
+        lista = csv.reader(file)
+        for row in lista:
+            if len(row) == 4 and row[1].strip() == titulo.strip():
+                livro_encontrado = True
+                break
+
+    if not livro_encontrado:
+        print(f"O livro '{titulo}' não está disponível na biblioteca.")
+        return
+
+    # Verificar se o livro já está emprestado e adicionar à fila de espera
+    with open(dirEmprestimos, 'r') as file:
+        lista_emprestimos = csv.reader(file)
+        for row in lista_emprestimos:
+            if len(row) == 4 and row[0].strip() == titulo.strip() and row[3] == "":
+                print(f"O livro '{titulo}' já está emprestado. Você foi adicionado à fila de espera.")
+                # Adicionar à fila de espera
+                with open(dirFilaEspera, 'a', newline='') as fila_file:
+                    writer = csv.writer(fila_file)
+                    writer.writerow([titulo, usuario])
+                return
+
+    # Registrar o empréstimo caso o livro não tenha sido emprestado
+    with open(dirEmprestimos, 'a', newline='') as emprestimos_file:
+        writer = csv.writer(emprestimos_file)
+        writer.writerow([titulo, usuario, datetime.now().strftime('%Y-%m-%d'), ""])
+    print(f"O livro '{titulo}' foi emprestado ao usuário {usuario}.")
+
+def registrar_devolucao(titulo):
+    emprestimos = []
+    devolvido = False
+
+    # Carregar todos os empréstimos e marcar o livro como devolvido
+    with open(dirEmprestimos, 'r', newline='') as emprestimos_file:
+        lista = csv.reader(emprestimos_file)
+        for row in lista:
+            if len(row) == 4 and row[0].strip() == titulo.strip() and row[3] == "":
+                row[3] = datetime.now().strftime('%Y-%m-%d')  # Registrar a data de devolução
+                devolvido = True
+            emprestimos.append(row)
+
+    if devolvido:
+        # Atualizar o arquivo emprestimos_DB.csv com a devolução
+        with open(dirEmprestimos, 'w', newline='') as emprestimos_file:
+            writer = csv.writer(emprestimos_file)
+            writer.writerows(emprestimos)
+        print(f"O livro '{titulo}' foi devolvido com sucesso.")
+    else:
+        print(f"O livro '{titulo}' não foi encontrado na lista de empréstimos pendentes.")
+
+
+def organizar_fila_espera(titulo):
+    fila_espera = []
+
+    # Carregar a fila de espera
+    with open(dirFilaEspera, 'r') as file:
+        lista_fila = csv.reader(file)
+        for row in lista_fila:
+            if len(row) == 2 and row[0].strip() == titulo.strip():
+                fila_espera.append(row[1])  # Adiciona o nome do usuário à fila
+
+    if not fila_espera:
+        print(f"Não há ninguém na fila de espera para o livro '{titulo}'.")
+        return
+
+    print(f"Organizando fila de espera para o livro '{titulo}':")
+    for i, usuario in enumerate(fila_espera, 1):
+        print(f"{i}. {usuario}")
+
+    # Opcional: Podemos remover o primeiro usuário da fila quando o livro for devolvido
+    devolver = input(f"Deseja notificar o primeiro usuário da fila ({fila_espera[0]}) sobre a disponibilidade do livro? (S/N): ")
+    if devolver.upper() == "S":
+        # Retirar o primeiro da fila de espera
+        fila_espera.pop(0)
+
+        # Atualizar a fila de espera no arquivo
+        with open(dirFilaEspera, 'w', newline='') as file:
+            writer = csv.writer(file)
+            for usuario in fila_espera:
+                writer.writerow([titulo, usuario])
+        
+        print(f"Usuário {fila_espera[0]} foi notificado.")
+    else:
+        print("Fila de espera não foi alterada.")
