@@ -6,12 +6,11 @@ from datetime import datetime
 #### código ainda em construção - DV
 
 def get_user():
-    nome = input('Indique o nome do Utilizador que pretende remover: ')
+    # nome = input('Indique o nome do Utilizador que pretende remover: ')
     
-         # Colocar a confirmação de ter a certeza para eliminar
+    #      # Colocar a confirmação de ter a certeza para eliminar
 
     # if dirs.passAdmin == getpass.getpass('Introduza a password de administrador: ', '*'):
-        # remover user da Base dados
 
     # user_info = []
 
