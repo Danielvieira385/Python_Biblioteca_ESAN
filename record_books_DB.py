@@ -57,7 +57,7 @@ def get_all_books():
     with open(dirBooks, 'r') as file:
         lista = csv.reader(file)
         for row in lista:
-            if len(row) == 3:  # mudar para 4 quando genero funcionar
+            if len(row) == 4:  # mudar para 4 quando genero funcionar
                 book = {
                     'autor': row[0],
                     'title_book': row[1],
