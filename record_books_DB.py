@@ -65,9 +65,6 @@ def get_all_books():
                     'publish_date': row[3]
                 }
                 books.append(book)
-
-                
-    
     return books
 
 
