@@ -1,7 +1,7 @@
 import diretorios as dir
 import time
 from datetime import datetime
-import bcrypt
+# import bcrypt
 
 def validate_password(password):
     # Validação condicional da password

@@ -147,8 +147,9 @@ def main():
             elif sub_opcao == '5.3':
                 print("Aplicar Filtros Específicos")
                 criteria = {
-                        'title': input('Indique o título da obra: '),
                         'author': input('Indique o nome do autor: '),
+                        'title': input('Indique o título da obra: '),
+                        'genero_book': input('Indique o genero do livro'),
                         'publish_date': input('Indique o ano da publicação: ')
                     }
                 remover_vazios = {}

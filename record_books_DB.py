@@ -61,8 +61,9 @@ def get_all_books():
                 book = {
                     'autor': row[0],
                     'title_book': row[1],
-                    'publish_date': row[2],
-                    'genero_book': row[3]
+                    'genero_book': row[2],
+                    'publish_date': row[3]
+
 
                 }
                 books.append(book)

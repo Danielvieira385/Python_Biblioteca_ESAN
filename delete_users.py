@@ -23,5 +23,5 @@ def getUserToRemove():
     return infoUserToRemove
     
     
-i = getUserToRemove()
-print(i)
+# i = getUserToRemove()
+# print(i)
