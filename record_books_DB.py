@@ -63,12 +63,10 @@ def get_all_books():
                     'title_book': row[1],
                     'genero_book': row[2],
                     'publish_date': row[3]
-
-
                 }
                 books.append(book)
             else:
-                print(f"Erro, livros disponiveis: {row}")
+                print("Erro")
     
     return books
 
