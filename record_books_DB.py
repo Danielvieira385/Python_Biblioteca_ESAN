@@ -65,8 +65,8 @@ def get_all_books():
                     'publish_date': row[3]
                 }
                 books.append(book)
-            else:
-                print("Erro")
+
+                
     
     return books
 
