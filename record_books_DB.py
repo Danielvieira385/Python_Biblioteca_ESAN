@@ -48,9 +48,17 @@ def recordBook(autor, title_book, genero_book, publish_date):
 def get_all_books():
     books = []
     with open(dirBooks, 'r') as file:
-        lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'genero_book', 'publish_date'])
+        lista = csv.reader(file)
         for row in lista:
-            books.append(row)
+            if len(row) == 3:  # mudar para 4 quando genero funcionar
+                book = {
+                    'autor': row[0],
+                    'title_book': row[1],
+                    'publish_date': row[2],
+                    'genero_book': row[3]
+
+                }
+                books.append(book)
     return books
 
 

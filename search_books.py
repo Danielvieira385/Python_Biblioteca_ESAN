@@ -22,5 +22,7 @@ def filter_books(criteria):
         filtered_books = [book for book in filtered_books if book['autor'] and criteria['author'].lower() in book['autor'].lower()]
     if 'publish_date' in criteria:
         filtered_books = [book for book in filtered_books if book['publish_date'] == criteria['publish_date']]
+    if 'genero_book' in criteria:
+        filtered_books = [book for book in filtered_books if book['genero_book'] and criteria['genero_book'].lower() in book['genero_book'].lower()]
     # Retorna a lista de livros filtrados
     return filtered_books
