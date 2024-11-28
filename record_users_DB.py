@@ -1,29 +1,35 @@
 import diretorios as dir
 import time
-from datetime import datetime
-# import bcrypt
 
-def validate_password(password):
-    # Validação condicional da password
-    if len(password) >= 4:
-        return "A senha deve ter pelo maior ou igual que 4 caracteres."
-    return True  # Retorna True se a password for válida
+def record_user(utilizador):
+    # Validação inicial
+    if not utilizador.strip():
+        return "O utilizador não pode ser vazio."
+    # Inicia o dicionário de usuários
+    usuarios = {}
 
-def record_user(nome, password):
-    # Validação das condições iniciais
-    if not nome:
-        return "O nome não pode ser vazio."
-    if not validate_password(password):
-        return "Senha inválida."
+    with open(dir.dirUsers, 'r') as arquivo:
+        for linha in arquivo:
+            id_usuario, nome_usuario = linha.strip().split(":", 1)
+            usuarios[int(id_usuario)] = nome_usuario
 
-    # Encriptação da password
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-    # Escreve no arquivo
-    with open(dir.dirUsers, 'a') as user:
-        user.write(f"{nome},{hashed_password}\n")
-        print("Utilizador registado com sucesso!")
+    # Verificar se o utilizador já está registado
+    if utilizador in usuarios.values():
+        print("Esse utilizador já existe.")
         countdown(3)
+        return "Esse utilizador já existe."
+
+    # Gerar um ID para o novo usuário e adiciona ao dicionário
+    novo_id = max(usuarios.keys(), default=0) + 1
+    usuarios[novo_id] = utilizador
+
+    # Salvar o dicionário atualizado no arquivo
+    with open(dir.dirUsers, 'w') as arquivo:
+        for id_usuario, nome_usuario in usuarios.items():
+            arquivo.write(f"{id_usuario}:{nome_usuario}\n")
+    print("Utilizador registado com sucesso!")
+    countdown(3)
+    return "Registro concluído."
 
 def countdown(t):
     for i in range(t, 0, -1):

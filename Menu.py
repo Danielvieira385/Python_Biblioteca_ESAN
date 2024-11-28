@@ -1,6 +1,5 @@
 import os
 import time
-import getpass
 import delete_users as dUser
 import record_users_DB as rUser
 import record_books_DB as rBook
@@ -61,14 +60,11 @@ def main():
 
             if sub_opcao == '1.1':
                 print("Registar Novo Utilizador")
-                rUser.recordUser(
-                                nome = input('\nIndique o nome do Utilizador: '),
-                                password = getpass.getpass('\nO que digitar estará oculto, no final pressione ENTER.'+'\nIndique a password: ')
-                                )
+                rUser.record_user(utilizador = input('\nIndique o Utilizador: '))
                 
             elif sub_opcao == '1.2':
                 print("Eliminar Utilizador")
-                # dUser.get_user() #### Código ainda não está pronto - DV
+                dUser.remove_user(utilizador = input('\nIndique o Utilizador: '))
 
             else:
                 print("Sub-opção inválida!")
