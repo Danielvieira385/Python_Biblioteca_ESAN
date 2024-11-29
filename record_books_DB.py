@@ -1,7 +1,7 @@
 import csv
 import time
 from datetime import datetime
-import diretorios as dirBooks
+import diretorios as dir
 
 def recordBook(autor, title_book, genero_book, publish_date):
     book_info = []
@@ -39,7 +39,7 @@ def recordBook(autor, title_book, genero_book, publish_date):
 
     book_info_str = ",".join(book_info)
 
-    with open(dirBooks, 'a') as book:
+    with open(dir.dirBooks, 'a') as book:
         book.write(book_info_str + "\n")
         print("Livro inserido na base dados com sucesso!")
 
@@ -47,7 +47,7 @@ def recordBook(autor, title_book, genero_book, publish_date):
 #dicionario para a pesquisa.
 def get_all_books():
     books = []
-    with open(dirBooks, 'r') as file:
+    with open(dir.dirBooks, 'r') as file:
         lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'genero_book', 'publish_date'])
         for row in lista:
             if len(row) == 4:  # mudar para 4 quando genero funcionar
@@ -67,7 +67,7 @@ def remover_livro(titulo):
     
     # Ler todos os livros e armazená-los numa lista, exceto o livro a ser removido
     try:
-        with open(dirBooks, 'r', newline='') as file:
+        with open(dir.dirBooks, 'r', newline='') as file:
             lista = csv.reader(file)
             for row in lista:
                 if len(row) == 3:  # Verifica se a linha tem o formato esperado (autor, título, ano)
@@ -84,7 +84,7 @@ def remover_livro(titulo):
 
     # Escrever a lista atualizada de livros de volta no CSV
     if livro_removido:
-        with open(dirBooks, 'w', newline='') as file:
+        with open(dir.dirBooks, 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(livros)
         mensagem = f"O livro '{titulo}' foi removido com sucesso."
@@ -105,7 +105,7 @@ def atualizar_informacoes_livro(titulo):
     
     # Ler todos os livros e armazená-los numa lista
     try:
-        with open(dirBooks, 'r', newline='') as file:
+        with open(dir.dirBooks, 'r', newline='') as file:
             lista = csv.reader(file)
             for row in lista:
                 if len(row) == 3:  # Verifica se a linha tem o formato esperado (autor, título, ano)
@@ -135,7 +135,7 @@ def atualizar_informacoes_livro(titulo):
 
     # Escrever a lista atualizada de livros de volta no CSV
     if livro_atualizado:
-        with open(dirBooks, 'w', newline='') as file:
+        with open(dir.dirBooks, 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(livros)
         mensagem = "O livro '{titulo}' foi atualizado com sucesso."
@@ -155,7 +155,7 @@ def registrar_emprestimo(titulo, usuario):
     livro_encontrado = False
 
     # Carregar a lista de livros para verificar disponibilidade
-    with open(dirBooks, 'r') as file:
+    with open(dir.dirBooks, 'r') as file:
         lista = csv.reader(file)
         for row in lista:
             if len(row) == 4 and row[1].strip() == titulo.strip():
