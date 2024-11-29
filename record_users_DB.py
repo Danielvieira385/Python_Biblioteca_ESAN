@@ -28,8 +28,10 @@ def record_user(utilizador):
         for id_usuario, nome_usuario in usuarios.items():
             arquivo.write(f"{id_usuario}:{nome_usuario}\n")
     print("Utilizador registado com sucesso!")
-    countdown(3)
-    return "Registro concluído."
+    print(f"ID de utilizador: {novo_id}: {utilizador}")
+    input("Pressione Enter para continuar...")
+
+    return "Registo concluído."
 
 def countdown(t):
     for i in range(t, 0, -1):

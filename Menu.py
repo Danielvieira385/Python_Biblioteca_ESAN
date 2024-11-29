@@ -64,7 +64,9 @@ def main():
                 
             elif sub_opcao == '1.2':
                 print("Eliminar Utilizador")
-                dUser.remove_user(utilizador = input('\nIndique o Utilizador: '))
+                utilizador = input('Indique o Utilizador (ou pressione ENTER para continuar): ') or None
+                id_usuario = input('Indique o ID do Utilizador (ou pressione ENTER para continuar): ') or None
+                dUser.remove_user(utilizador=utilizador, id_usuario=id_usuario)
 
             else:
                 print("Sub-opção inválida!")
