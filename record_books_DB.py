@@ -1,7 +1,7 @@
 import csv
+import time
 from datetime import datetime
-
-dirBooks = "C:\\Users\\Toni\\OneDrive - Universidade de Aveiro\\Projeto Python\\BibliotecaESAN\\books_DB.csv"
+import diretorios as dirBooks
 
 def recordBook(autor, title_book, genero_book, publish_date):
     book_info = []
