@@ -1,9 +1,23 @@
-Daniel,Teste,2024
-Daniel Vieira,Teste,2024
-Aluno 1,Foi-se,2020
-Aluno 1,tetststa,2323
-Aluno 2,qwerty,978
-toni,ola,2024
-Toni,Teste2,2025
-a,a,2323teste,teste,drama,2024
-teste,teste,drama,1234
+Daniel,Teste,2024,Ação
+Daniel Vieira,Teste,2024,Comédia
+Aluno 1,Foi-se,2020,Ação
+Aluno 1,tetststa,2323,Comédia
+Aluno 2,qwerty,978,Ação
+toni,ola,2024,Comédia
+Toni,Teste2,2025,Ação
+teste,teste,drama,Comédia
+Arthur Clarke,Uma Odisseia no Espaço,1968,Ficção científica
+Isaac Asimov,Fundação,1951,Ficção científica
+Frank Herbert,Duna,1965,Ficção científica
+Jane Austen,Orgulho e Preconceito,1813,Romance
+Nicholas Sparks,Diário de Uma Paixão,1996,Romance
+Stephenie Meyer,Crepúsculo,2005,Romance
+Agatha Christie,Assassinato no Expresso Oriente,1934,Suspense
+Stephen King,O Iluminado,1977,Suspense
+Dan Brown,O Código Da Vinci,2003,Suspense
+Charles Duhigg, A Força do Hábito, 2012,Psicologia
+Bruce Schneier, Secrets and Lies: Digital Security in a Networked World,2000,Cibersegurança
+Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship,2008,Desenvolvimento de Software
+Andrew S. Tanenbaum, Computer Networks, 1981,Redes de Computadores
+Douglas Crockford, JavaScript: The Good Parts,2008,Desenvolvimento de Software
+Kevin Mitnick, The Art of Deception, 2002,Cibersegurança
