@@ -47,17 +47,21 @@ def recordBook(autor, title_book, genero_book, publish_date):
 #dicionario para a pesquisa.
 def get_all_books():
     books = []
-    with open(dir.dirBooks, 'r') as file:
-        lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'genero_book', 'publish_date'])
-        for row in lista:
-            if len(row) == 4:  # mudar para 4 quando genero funcionar
-                book = {
-                    'autor': row[0],
-                    'title_book': row[1],
-                    'genero_book': row[2],
-                    'publish_date': row[3]
-                }
-                books.append(book)
+    try:
+        with open(dir.dirBooks, 'r') as file:
+            lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'genero_book', 'publish_date'])
+            for row in lista:
+                if len(row) == 4:  #tem de ter 4
+                    book = {
+                        'autor': row['autor'],  
+                        'title_book': row['title_book'],  
+                        'publish_date': row['publish_date'],                          
+                        'genero_book': row['genero_book']    
+                    }
+                    books.append(book)
+    except FileNotFoundError:
+        print(f"Erro: O arquivo {dir.dirBooks} não foi encontrado. Verifique se o caminho está correto.")
+        return []
     return books
 
 

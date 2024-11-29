@@ -147,8 +147,9 @@ def main():
                 criteria = {
                         'author': input('Indique o nome do autor: '),
                         'title': input('Indique o título da obra: '),
-                        'genero_book': input('Indique o genero do livro: '),
-                        'publish_date': input('Indique o ano da publicação: ')
+                        'publish_date': input('Indique o ano da publicação: '),                        
+                        'genero_book': input('Indique o genero do livro: ')
+
                     }
                 remover_vazios = {}
                 for key, value in criteria.items():
