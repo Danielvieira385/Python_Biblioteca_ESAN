@@ -49,14 +49,14 @@ def get_all_books():
     books = []
     try:
         with open(dir.dirBooks, 'r') as file:
-            lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'genero_book', 'publish_date'])
+            lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'publish_date', 'genero_book'])
             for row in lista:
                 if len(row) == 4:  #tem de ter 4
                     book = {
-                        'autor': row['autor'],  
-                        'title_book': row['title_book'],  
-                        'publish_date': row['publish_date'],                          
-                        'genero_book': row['genero_book']    
+                        'autor': row[0],  
+                        'title_book': row[1],  
+                        'publish_date': row[2],                          
+                        'genero_book': row[3]    
                     }
                     books.append(book)
     except FileNotFoundError:

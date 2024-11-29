@@ -18,13 +18,15 @@ def filter_books(criteria):
     # Inicia a lista de livros filtrados com todos os livros
     filtered_books = books
     # Filtra a lista de livros para incluir apenas com aquele título
-    if 'title' in criteria:
-        filtered_books = [book for book in filtered_books if book['title_book'] and criteria['title'].lower() in book['title_book'].lower()]
-    if 'author' in criteria:
-        filtered_books = [book for book in filtered_books if book['autor'] and criteria['author'].lower() in book['autor'].lower()]
-    if 'genero_book' in criteria:
-        filtered_books = [book for book in filtered_books if book['genero_book'] and criteria['genero_book'].lower() in book['genero_book'].lower()]    
-    if 'publish_date' in criteria:
+    if 'title' in criteria and criteria['title']:
+        filtered_books = [book for book in filtered_books if criteria['title'].lower() in book['title_book'].lower()]
+    if 'author' in criteria and criteria['author']:
+        filtered_books = [book for book in filtered_books if criteria['author'].lower() in book['autor'].lower()]
+    if 'publish_date' in criteria and criteria['publish_date']:
         filtered_books = [book for book in filtered_books if book['publish_date'] == criteria['publish_date']]
-    # Retorna a lista de livros filtrados
+    if 'genero_book' in criteria and criteria['genero_book']:
+        filtered_books = [book for book in filtered_books if criteria['genero_book'].lower() in book['genero_book'].lower()]
+
     return filtered_books
+
+
