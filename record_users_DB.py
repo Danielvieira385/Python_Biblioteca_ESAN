@@ -1,5 +1,4 @@
 import diretorios as dir
-import time
 
 def record_user(utilizador):
     # Validação inicial
@@ -16,7 +15,7 @@ def record_user(utilizador):
     # Verificar se o utilizador já está registado
     if utilizador in usuarios.values():
         print("Esse utilizador já existe.")
-        countdown(3)
+        input("Pressione Enter para continuar...")
         return "Esse utilizador já existe."
 
     # Gerar um ID para o novo usuário e adiciona ao dicionário
@@ -32,8 +31,3 @@ def record_user(utilizador):
     input("Pressione Enter para continuar...")
 
     return "Registo concluído."
-
-def countdown(t):
-    for i in range(t, 0, -1):
-        print(i)
-        time.sleep(1)

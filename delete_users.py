@@ -1,5 +1,4 @@
 import os
-import time
 import diretorios as dirs
 
 def remove_user(utilizador=None, id_usuario=None):
@@ -41,7 +40,7 @@ def remove_user(utilizador=None, id_usuario=None):
 
     if not usuario_encontrado:
         print("Esse utilizador não foi encontrado.")
-        countdown(3)
+        input("Pressione Enter para continuar...")
         return "Esse utilizador não foi encontrado."
 
     # Salvar o dicionário atualizado no arquivo
@@ -52,8 +51,3 @@ def remove_user(utilizador=None, id_usuario=None):
     print("Utilizador removido com sucesso!")
     input("Pressione Enter para continuar...")
     return "Remoção concluída."
-
-def countdown(t):
-    for i in range(t, 0, -1):
-        print(i)
-        time.sleep(1)
