@@ -1,9 +1,4 @@
-Aluno 1,tetststa,2323,Comédia
-Aluno 2,qwerty,978,Ação
-toni,ola,2024,Comédia
-Toni,Teste2,2025,Ação
-teste,teste,drama,Comédia
-Arthur Clarke,Uma Odisseia no Espaço,1968,Ficção científica
+Arthur C. Clarke,Uma Odisseia no Espaço,1968,Ficção científica
 Isaac Asimov,Fundação,1951,Ficção científica
 Frank Herbert,Duna,1965,Ficção científica
 Jane Austen,Orgulho e Preconceito,1813,Romance
@@ -28,33 +23,31 @@ Kevin Mitnick,Ghost in the Wires,2011,Cibersegurança
 Simon Singh,Fermat's Enigma,1997,Matemática
 Douglas Crockford,JavaScript,2008,Desenvolvimento
 Paul Graham,Hackers & Painters,2004,Tecnologia
-Dan Brown, Inferno, 2013, Ficção
-Yuval Noah Harari, Sapiens, 2011, História
-George Orwell, 1984, 1949, Ficção Distópica
-George Orwell, Revolução dos Bichos, 1945, Ficção Distópica
-Isaac Asimov, Fundação, 1951, Ficção Científica
-Isaac Asimov, Eu, Robô, 1950, Ficção Científica
-J.R.R. Tolkien, O Hobbit, 1937, Fantasia
-J.R.R. Tolkien, O Senhor dos Anéis, 1954, Fantasia
-Robert C. Martin, Clean Code, 2008, Desenvolvimento
-Bruce Schneier, Liars & Outliers, 2012, Cibersegurança
-Kevin Mitnick, Ghost in the Wires, 2011, Cibersegurança
-Kevin Mitnick, The Art of Deception, 2002, Cibersegurança
-Andrew S. Tanenbaum, Computer Networks, 1981, Redes
-Douglas Crockford, JavaScript, 2008, Desenvolvimento
-Simon Singh, Fermat's Enigma, 1997, Matemática
-Simon Singh, The Code Book, 1999, Criptografia
-Paul Graham, Hackers & Painters, 2004, Tecnologia
-Charles Duhigg, A Força do Hábito, 2012, Psicologia
-James Clear, Hábitos Atômicos, 2018, Psicologia
+Dan Brown, Inferno, 2013,Ficção
+Yuval Noah Harari, Sapiens, 2011,História
+George Orwell, 1984, 1949,Ficção Distópica
+George Orwell, Revolução dos Bichos, 1945,Ficção Distópica
+Isaac Asimov, Fundação, 1951,Ficção Científica
+J.R.R. Tolkien, O Hobbit, 1937,Fantasia
+J.R.R. Tolkien, O Senhor dos Anéis, 1954,Fantasia
+Robert C. Martin, Clean Code, 2008,Desenvolvimento
+Bruce Schneier, Liars & Outliers, 2012,Cibersegurança
+Kevin Mitnick, Ghost in the Wires, 2011,Cibersegurança
+Kevin Mitnick, The Art of Deception, 2002,Cibersegurança
+Andrew S. Tanenbaum, Computer Networks, 1981,Redes
+Douglas Crockford, JavaScript, 2008,Desenvolvimento
+Simon Singh, Fermat's Enigma, 1997,Matemática
+Simon Singh, The Code Book, 1999,Criptografia
+Paul Graham, Hackers & Painters, 2004,Tecnologia
+Charles Duhigg, A Força do Hábito, 2012,Psicologia
+James Clear, Hábitos Atômicos, 2018,Psicologia
 Cal Newport, Trabalho Focado, 2016, Produtividade
-Stephen R. Covey, Os 7 Hábitos das Pessoas Altamente Eficazes, 1989, Autoajuda
-Dale Carnegie, Como Fazer Amigos e Influenciar Pessoas, 1936, Autoajuda
-Yuval Noah Harari, Homo Deus, 2015, História
-Arthur C. Clarke, 2001: Uma Odisseia no Espaço, 1968, Ficção Científica
-Frank Herbert, Duna, 1965, Ficção Científica
-H.G. Wells, A Máquina do Tempo, 1895, Ficção Científica
-Margaret Atwood, O Conto da Aia, 1985, Ficção Distópica
-Ernest Cline, Ready Player One, 2011, Ficção Científica
-Ray Bradbury, Fahrenheit 451, 1953, Ficção Distópica
-Aldous Huxley, Admirável Mundo Novo, 1932, Ficção Distópica
+Stephen R. Covey, Os 7 Hábitos das Pessoas Altamente Eficazes,1989,Autoajuda
+Dale Carnegie, Como Fazer Amigos e Influenciar Pessoas, 1936,Autoajuda
+Yuval Noah Harari, Homo Deus, 2015,História
+Frank Herbert, Duna, 1965,Ficção Científica
+H.G. Wells, A Máquina do Tempo, 1895,Ficção Científica
+Margaret Atwood, O Conto da Aia, 1985,Ficção Distópica
+Ernest Cline, Ready Player One, 2011,Ficção Científica
+Ray Bradbury, Fahrenheit 451, 1953,Ficção Distópica
+Aldous Huxley, Admirável Mundo Novo, 1932,Ficção Distópica
