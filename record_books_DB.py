@@ -52,13 +52,8 @@ def get_all_books():
             lista = csv.DictReader(file, fieldnames=['autor', 'title_book', 'publish_date', 'genero_book'])
             for row in lista:
                 if len(row) == 4:  #tem de ter 4
-                    book = {
-                        'autor': row[0],  
-                        'title_book': row[1],  
-                        'publish_date': row[2],                          
-                        'genero_book': row[3]    
-                    }
-                    books.append(book)
+
+                    books.append(row)
     except FileNotFoundError:
         print(f"Erro: O arquivo {dir.dirBooks} não foi encontrado. Verifique se o caminho está correto.")
         return []
