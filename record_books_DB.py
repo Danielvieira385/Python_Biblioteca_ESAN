@@ -166,19 +166,19 @@ def registrar_emprestimo(titulo, usuario):
         return
 
     # Verificar se o livro já está emprestado e adicionar à fila de espera
-    with open(dirEmprestimos, 'r') as file:
+    with open(dir.dirEmprestimos, 'r') as file:
         lista_emprestimos = csv.reader(file)
         for row in lista_emprestimos:
             if len(row) == 4 and row[0].strip() == titulo.strip() and row[3] == "":
                 print(f"O livro '{titulo}' já está emprestado. Você foi adicionado à fila de espera.")
                 # Adicionar à fila de espera
-                with open(dirFilaEspera, 'a', newline='') as fila_file:
+                with open(dir.dirFilaEspera, 'a', newline='') as fila_file:
                     writer = csv.writer(fila_file)
                     writer.writerow([titulo, usuario])
                 return
 
     # Registrar o empréstimo caso o livro não tenha sido emprestado
-    with open(dirEmprestimos, 'a', newline='') as emprestimos_file:
+    with open(dir.dirEmprestimos, 'a', newline='') as emprestimos_file:
         writer = csv.writer(emprestimos_file)
         writer.writerow([titulo, usuario, datetime.now().strftime('%Y-%m-%d'), ""])
     print(f"O livro '{titulo}' foi emprestado ao usuário {usuario}.")
@@ -188,7 +188,7 @@ def registrar_devolucao(titulo):
     devolvido = False
 
     # Carregar todos os empréstimos e marcar o livro como devolvido
-    with open(dirEmprestimos, 'r', newline='') as emprestimos_file:
+    with open(dir.dirEmprestimos, 'r', newline='') as emprestimos_file:
         lista = csv.reader(emprestimos_file)
         for row in lista:
             if len(row) == 4 and row[0].strip() == titulo.strip() and row[3] == "":
@@ -198,7 +198,7 @@ def registrar_devolucao(titulo):
 
     if devolvido:
         # Atualizar o arquivo emprestimos_DB.csv com a devolução
-        with open(dirEmprestimos, 'w', newline='') as emprestimos_file:
+        with open(dir.dirEmprestimos, 'w', newline='') as emprestimos_file:
             writer = csv.writer(emprestimos_file)
             writer.writerows(emprestimos)
         print(f"O livro '{titulo}' foi devolvido com sucesso.")
@@ -210,7 +210,7 @@ def organizar_fila_espera(titulo):
     fila_espera = []
 
     # Carregar a fila de espera
-    with open(dirFilaEspera, 'r') as file:
+    with open(dir.dirFilaEspera, 'r') as file:
         lista_fila = csv.reader(file)
         for row in lista_fila:
             if len(row) == 2 and row[0].strip() == titulo.strip():
@@ -231,7 +231,7 @@ def organizar_fila_espera(titulo):
         fila_espera.pop(0)
 
         # Atualizar a fila de espera no arquivo
-        with open(dirFilaEspera, 'w', newline='') as file:
+        with open(dir.dirFilaEspera, 'w', newline='') as file:
             writer = csv.writer(file)
             for usuario in fila_espera:
                 writer.writerow([titulo, usuario])

@@ -1,4 +1,3 @@
-import os
 import diretorios as dirs
 
 def remove_user(utilizador=None, id_usuario=None):
