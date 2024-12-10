@@ -43,7 +43,6 @@ def recordBook(autor, title_book, genero_book, publish_date):
         book.write(book_info_str + "\n")
         print("Livro inserido na base dados com sucesso!")
 
-
 #dicionario para a pesquisa.
 def get_all_books():
     books = []
@@ -58,7 +57,6 @@ def get_all_books():
         print(f"Erro: O arquivo {dir.dirBooks} não foi encontrado. Verifique se o caminho está correto.")
         return []
     return books
-
 
 def remover_livro(titulo):
     livros = []
@@ -149,7 +147,6 @@ def atualizar_informacoes_livro(titulo):
             time.sleep(0.05)
         print("\n")
 
-
 def registrar_emprestimo(titulo, usuario):
     livro_encontrado = False
 
@@ -204,7 +201,6 @@ def registrar_devolucao(titulo):
         print(f"O livro '{titulo}' foi devolvido com sucesso.")
     else:
         print(f"O livro '{titulo}' não foi encontrado na lista de empréstimos pendentes.")
-
 
 def organizar_fila_espera(titulo):
     fila_espera = []
