@@ -1,9 +1,11 @@
 import os
 import time
+import diretorios as dir
 import delete_users as dUser
 import record_users_DB as rUser
 import record_books_DB as rBook
 import search_books as sBook
+import backup_function as backup
 
 def limpar_tela():##
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -38,6 +40,8 @@ def exibir_menu():
     print("║     [5.3] Aplicar Filtros Específicos            ║")
     print("║ [6] Sistema de Recomendações                     ║")
     print("║ [7] Cópia de Segurança e Carregamento de Dados   ║")
+    print("║     [7.1] Realizar Cópia de Segurança            ║")
+    print("║     [7.2] Reposição de Cópia de Segurança        ║")
     print("║ [8] Sair                                         ║")
     print("╚══════════════════════════════════════════════════╝")
 
@@ -83,7 +87,6 @@ def main():
                 genero_book = input('\nEx: Ação, Comédia, Drama, etc.'+'\nIndique o género da obra: ')
 
                 rBook.recordBook(autor, title_book, genero_book, publish_date)
-
 
             elif sub_opcao == '2.2':
                 print("Remover Livro")
@@ -169,7 +172,43 @@ def main():
 
         elif opcao == '7':
             print("\nCópia de Segurança e Carregamento de Dados")
-            # Implementar função de cópia de segurança e carregamento de dados
+            sub_opcao = input("Escolha uma sub-opção (7.1 ou 7.2): ")
+            
+            if sub_opcao == '7.1':
+                print("\nRealizar Cópia de Segurança\n")
+                with open(dir.dirInfoBackupDisponivel) as info_backup:
+                    if info_backup == "":
+                        decisao = input("\nDeseja realizar uma cópia de segurança (s/n)? ")
+                        if decisao.lower() == 's':
+                            backup.realizarBackupRepositorios()
+                            input("Pressione Enter para continuar...")
+                        else:
+                            print("Operação cancelada.")
+                            input("Pressione Enter para continuar...")
+                    else:
+                        print("Já existe uma cópia de segurança disponível.")
+                        print(info_backup.read())
+                        decisao = input("\nDeseja substituir a cópia de segurança existente (s/n)? ")
+                        if decisao.lower() == 's':
+                            backup.realizarBackupRepositorios()
+                            input("Pressione Enter para continuar...")
+                        else:
+                            print("Operação cancelada.")
+                            input("Pressione Enter para continuar...")
+                            
+            elif sub_opcao == '7.2':
+                print("\nReposição de Cópia de Segurança")
+                decisao = input("\nDeseja repor a cópia de segurança dos repositórios (s/n)? ")
+                if decisao.lower() == 's':
+                    backup.reporBackupRepositorios()
+                    input("Pressione Enter para continuar...")
+                else:
+                    print("Operação cancelada.")
+                    input("Pressione Enter para continuar...")
+                    
+            else:
+                print("Sub-opção inválida!")
+                input("Pressione Enter para continuar...")
 
         elif opcao == '8':
             animacao_saida()
