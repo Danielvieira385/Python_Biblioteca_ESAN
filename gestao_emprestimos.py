@@ -4,7 +4,6 @@ import diretorios as dir
 
 def registrar_emprestimo(titulo, usuario):
     livro_encontrado = False
-
     # Carregar a lista de livros para verificar disponibilidade
     with open(dir.dirBooks, 'r') as file:
         lista = csv.reader(file)
@@ -16,7 +15,6 @@ def registrar_emprestimo(titulo, usuario):
     if not livro_encontrado:
         print(f"O livro '{titulo}' não está disponível na biblioteca.")
         return
-
     # Verificar se o livro já está emprestado e adicionar à fila de espera
     with open(dir.dirEmprestimos, 'r') as file:
         lista_emprestimos = csv.reader(file)
@@ -28,7 +26,6 @@ def registrar_emprestimo(titulo, usuario):
                     writer = csv.writer(fila_file)
                     writer.writerow([titulo, usuario])
                 return
-
     # Registrar o empréstimo caso o livro não tenha sido emprestado
     with open(dir.dirEmprestimos, 'a', newline='') as emprestimos_file:
         writer = csv.writer(emprestimos_file)
