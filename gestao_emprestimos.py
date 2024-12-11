@@ -2,7 +2,7 @@ import csv
 from datetime import datetime
 import diretorios as dir
 
-def registrar_emprestimo(titulo, usuario):
+def registar_emprestimo(titulo, usuario):
     livro_encontrado = False
     # Carregar a lista de livros para verificar disponibilidade
     with open(dir.dirBooks, 'r') as file:
@@ -32,18 +32,18 @@ def registrar_emprestimo(titulo, usuario):
         writer.writerow([titulo, usuario, datetime.now().strftime('%Y-%m-%d'), ""])
     print(f"O livro '{titulo}' foi emprestado ao usuário {usuario}.")
 
-def registrar_devolucao(titulo):
+def registar_devolucao(titulo):
     emprestimos = []
     devolvido = False
 
     # Carregar todos os empréstimos e marcar o livro como devolvido
     with open(dir.dirEmprestimos, 'r', newline='') as emprestimos_file:
         lista = csv.reader(emprestimos_file)
-        for row in lista:
-            if len(row) == 4 and row[0].strip() == titulo.strip() and row[3] == "":
-                row[3] = datetime.now().strftime('%Y-%m-%d')  # Registrar a data de devolução
+        for livro in lista:
+            if len(livro) == 4 and livro[0].strip() == titulo.strip() and livro[3] == "":
+                livro[3] = datetime.now().strftime('%Y-%m-%d')  # Registrar a data de devolução
                 devolvido = True
-            emprestimos.append(row)
+            emprestimos.append(livro)
 
     if devolvido:
         # Atualizar o arquivo emprestimos_DB.csv com a devolução
@@ -60,9 +60,9 @@ def organizar_fila_espera(titulo):
     # Carregar a fila de espera
     with open(dir.dirFilaEspera, 'r') as file:
         lista_fila = csv.reader(file)
-        for row in lista_fila:
-            if len(row) == 2 and row[0].strip() == titulo.strip():
-                fila_espera.append(row[1])  # Adiciona o nome do usuário à fila
+        for livro in lista_fila:
+            if len(livro) == 2 and livro[0].strip() == titulo.strip():
+                fila_espera.append(livro[1])  # Adiciona o nome do usuário à fila
 
     if not fila_espera:
         print(f"Não há ninguém na fila de espera para o livro '{titulo}'.")
@@ -73,8 +73,8 @@ def organizar_fila_espera(titulo):
         print(f"{i}. {usuario}")
 
     # Opcional: Podemos remover o primeiro usuário da fila quando o livro for devolvido
-    devolver = input(f"Deseja notificar o primeiro usuário da fila ({fila_espera[0]}) sobre a disponibilidade do livro? (S/N): ")
-    if devolver.upper() == "S":
+    devolver = input(f"Deseja notificar o primeiro usuário da fila ({fila_espera[0]}) sobre a disponibilidade do livro? (s/n): ")
+    if devolver.lower() == "s":
         # Retirar o primeiro da fila de espera
         fila_espera.pop(0)
 

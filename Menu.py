@@ -107,11 +107,11 @@ def main():
                 print("Registar Empréstimo")
                 titulo = input("Digite o título do livro que deseja emprestar: ")
                 usuario = input("Digite o nome do usuário que está emprestando o livro: ")
-                gEmprestimos.registrar_emprestimo(titulo, usuario)
+                gEmprestimos.registar_emprestimo(titulo, usuario)
             elif sub_opcao == '3.2':
                 print("Registar Devolução")
                 titulo = input("Digite o título do livro que deseja devolver: ")
-                gEmprestimos.registrar_devolucao(titulo)
+                gEmprestimos.registar_devolucao(titulo)
             elif sub_opcao == '3.3':
                 print("Organizar Fila de Espera")
                 titulo = input("Indique o título do livro para organizar a fila de espera: ")
