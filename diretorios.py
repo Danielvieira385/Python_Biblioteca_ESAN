@@ -1,9 +1,9 @@
 # Descrição: Arquivo com os diretórios dos arquivos .csv e .txt utilizados no projeto
 # Diretórios para os arquivos .csv
-dirBooks = "books_DB.csv"
-dirUsers = "users_DB.csv"
-dirEmprestimos = "emprestimos_DB.csv"
-dirFilaEspera = "fila_espera_DB.csv"
+dirBooks = "repositorios/books_DB.csv"
+dirUsers = "repositorios/users_DB.csv"
+dirEmprestimos = "repositorios/emprestimos_DB.csv"
+dirFilaEspera = "repositorios/fila_espera_DB.csv"
 
 # Diretórios para backups
 dirInfoBackupDisponivel = "repositorios_backups\info_Backup_disponivel.txt"

@@ -6,6 +6,7 @@ import record_users_DB as rUser
 import record_books_DB as rBook
 import search_books as sBook
 import backup_function as backup
+import gestao_emprestimos as gEmprestimos
 
 def limpar_tela():##
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -106,15 +107,15 @@ def main():
                 print("Registar Empréstimo")
                 titulo = input("Digite o título do livro que deseja emprestar: ")
                 usuario = input("Digite o nome do usuário que está emprestando o livro: ")
-                rBook.registrar_emprestimo(titulo, usuario)
+                gEmprestimos.registrar_emprestimo(titulo, usuario)
             elif sub_opcao == '3.2':
                 print("Registar Devolução")
                 titulo = input("Digite o título do livro que deseja devolver: ")
-                rBook.registrar_devolucao(titulo)
+                gEmprestimos.registrar_devolucao(titulo)
             elif sub_opcao == '3.3':
                 print("Organizar Fila de Espera")
                 titulo = input("Indique o título do livro para organizar a fila de espera: ")
-                rBook.organizar_fila_espera(titulo)
+                gEmprestimos.organizar_fila_espera(titulo)
             else:
                 print("Sub-opção inválida!")
                 
