@@ -65,12 +65,12 @@ def main():
 
             if sub_opcao == '1.1':
                 print("Registar Novo Utilizador")
-                rUser.record_user(utilizador = input('\nIndique o Utilizador: '))
+                rUser.record_user(utilizador = input('\nIntroduza o Utilizador: '))
                 
             elif sub_opcao == '1.2':
                 print("Eliminar Utilizador")
-                utilizador = input('Indique o Utilizador (ou pressione ENTER para continuar): ') or None
-                id_usuario = input('Indique o ID do Utilizador (ou pressione ENTER para continuar): ') or None
+                utilizador = input('Introduza o Utilizador (ou pressione ENTER para continuar): ') or None
+                id_usuario = input('IIntroduza o ID do Utilizador (ou pressione ENTER para continuar): ') or None
                 dUser.remove_user(utilizador=utilizador, id_usuario=id_usuario)
 
             else:
@@ -82,20 +82,20 @@ def main():
 
             if sub_opcao == '2.1':
                 print("Registar Novo Livro")
-                autor = input('\nIndique o nome do autor: ')
-                title_book = input('\nIndique o título da obra: ')
-                publish_date = input('\nIndique o ano da publicação: ')
-                genero_book = input('\nEx: Ação, Comédia, Drama, etc.'+'\nIndique o género da obra: ')
+                autor = input('\Introduza o nome do autor: ')
+                title_book = input('\Introduza o título da obra: ')
+                publish_date = input('\Introduza o ano da publicação: ')
+                genero_book = input('\nEx: Ação, Comédia, Drama, etc.'+'\Introduza o género da obra: ')
 
                 rBook.recordBook(autor, title_book, genero_book, publish_date)
 
             elif sub_opcao == '2.2':
                 print("Remover Livro")
-                titulo = input("Indique o título do livro a ser removido: ")
+                titulo = input("Introduza o título do livro a ser removido: ")
                 rBook.remover_livro(titulo) 
             elif sub_opcao == '2.3':
                 print("Atualizar Informações de um Livro")
-                titulo = input("Indique o título do livro a ser atualizado: ")
+                titulo = input("Introduza o título do livro a ser atualizado: ")
                 rBook.atualizar_informacoes_livro(titulo)
             else:
                 print("Sub-opção inválida!")
@@ -105,17 +105,20 @@ def main():
             sub_opcao = input("Escolha uma sub-opção (3.1, 3.2 ou 3.3): ")
             if sub_opcao == '3.1':
                 print("Registar Empréstimo")
-                titulo = input("Digite o título do livro que deseja emprestar: ")
-                utilizador = input("Digite o nome do usuário que está emprestando o livro: ")
+                titulo = input("Introduza o título do livro que pretende emprestar: ")
+                utilizador = input("Introduza o nome do utilizador que possui o livro: ")
                 gEmprestimos.registar_emprestimo(titulo, utilizador)
+
             elif sub_opcao == '3.2':
                 print("Registar Devolução")
-                titulo = input("Digite o título do livro que deseja devolver: ")
+                titulo = input("Introduza o título do livro que pretende devolver: ")
                 gEmprestimos.registar_devolucao(titulo)
+
             elif sub_opcao == '3.3':
                 print("Organizar Fila de Espera")
-                titulo = input("Indique o título do livro para organizar a fila de espera: ")
+                titulo = input("Introduza o título do livro para organizar a fila de espera: ")
                 gEmprestimos.organizar_fila_espera(titulo)
+                
             else:
                 print("Sub-opção inválida!")
                 
@@ -136,23 +139,23 @@ def main():
             sub_opcao = input("Escolha uma sub-opção (5.1, 5.2 ou 5.3): ")
             if sub_opcao == '5.1':
                 print("Pesquisa por Autor")
-                author = input('Indique o nome do autor: ')
+                author = input('Introduza o nome do autor: ')
                 books = sBook.search_by_author(author)
                 print("Livros encontrados:", books)  # Adicione esta linha para depuração
                 input("Pressione Enter para continuar...")
             elif sub_opcao == '5.2':
                 print("Pesquisa por Título")
-                title = input('Indique o título da obra: ')
+                title = input('Introduza o título da obra: ')
                 books = sBook.search_by_title(title)
                 print("Livros encontrados:", books)  # Adicione esta linha para depuração
                 input("Pressione Enter para continuar...")
             elif sub_opcao == '5.3':
                 print("Aplicar Filtros Específicos")
                 criteria = {
-                        'author': input('Indique o nome do autor: '),
-                        'title': input('Indique o título da obra: '),
-                        'publish_date': input('Indique o ano da publicação: '),                        
-                        'genero_book': input('Indique o genero do livro: ')
+                        'author': input('Introduza o nome do autor: '),
+                        'title': input('Introduza o título da obra: '),
+                        'publish_date': input('Introduza o ano da publicação: '),                        
+                        'genero_book': input('Introduza o genero do livro: ')
 
                     }
                 remover_vazios = {}
