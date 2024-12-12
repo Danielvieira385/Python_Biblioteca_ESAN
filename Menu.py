@@ -106,8 +106,8 @@ def main():
             if sub_opcao == '3.1':
                 print("Registar Empréstimo")
                 titulo = input("Digite o título do livro que deseja emprestar: ")
-                usuario = input("Digite o nome do usuário que está emprestando o livro: ")
-                gEmprestimos.registar_emprestimo(titulo, usuario)
+                utilizador = input("Digite o nome do usuário que está emprestando o livro: ")
+                gEmprestimos.registar_emprestimo(titulo, utilizador)
             elif sub_opcao == '3.2':
                 print("Registar Devolução")
                 titulo = input("Digite o título do livro que deseja devolver: ")
