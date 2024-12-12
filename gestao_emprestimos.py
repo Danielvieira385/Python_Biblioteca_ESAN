@@ -1,10 +1,13 @@
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
 import diretorios as dir
 import record_users_DB as users
 
+# Função para registar o empréstimo dos livros
 def registar_emprestimo(titulo, utilizador):
     livro_encontrado = False
+    data_atual = datetime.now().strftime('%Y-%m-%d')
+    previsao_devolucao = data_devolução(datetime.now())
         
     # Verifica se o utilizador está registado
     utilizador_encontrado = users.procurar_utilizador(utilizador)
@@ -28,7 +31,7 @@ def registar_emprestimo(titulo, utilizador):
             with open(dir.dirEmprestimos, 'r') as file:
                 lista_emprestimos = csv.reader(file)
                 for livro in lista_emprestimos:
-                    if len(livro) == 4 and livro[0].strip() == titulo.strip() and livro[3] == "":
+                    if len(livro) == 5 and livro[0].strip() == titulo.strip() and livro[4] == "":
                         print(f"O livro '{titulo}' já se encontra emprestado. Você foi adicionado à fila de espera.")
                         # Adiciona o utilizador à fila de espera
                         with open(dir.dirFilaEspera, 'a', newline='') as fila_file:
@@ -40,14 +43,14 @@ def registar_emprestimo(titulo, utilizador):
             # Regista o empréstimo do livro
             with open(dir.dirEmprestimos, 'a', newline='') as emprestimos_file:
                 info_livro_utilizador = csv.writer(emprestimos_file)
-                info_livro_utilizador.writerow([titulo, utilizador, datetime.now().strftime('%Y-%m-%d'), ""])
+                info_livro_utilizador.writerow([titulo, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
                 print(f"O livro '{titulo}' foi emprestado ao utilizador {utilizador}.")
                 input("Pressione Enter para continuar...")
             
             # Regista o empréstimo para o histórico
             with open(dir.dirHistorico, 'a', newline='') as historico_file:
                 info_livro_utilizador = csv.writer(historico_file)
-                info_livro_utilizador.writerow([titulo, utilizador, datetime.now().strftime('%Y-%m-%d')])
+                info_livro_utilizador.writerow([titulo, utilizador, data_atual])
         else:
             print(f"O livro '{titulo}' ou o utilizador '{utilizador}' não foi encontrado.")
             input("Pressione Enter para continuar...")
@@ -55,6 +58,7 @@ def registar_emprestimo(titulo, utilizador):
         print("O livro não pode ser emprestado a utilizar que não esteja registado.")
         input("Pressione Enter para continuar...")
 
+# Função para registar a devolução dos livros
 def registar_devolucao(titulo):
     emprestimos = []
     devolvido = False
@@ -63,13 +67,13 @@ def registar_devolucao(titulo):
     with open(dir.dirEmprestimos, 'r', newline='') as emprestimos_file:
         lista_livros = csv.reader(emprestimos_file)
         for livro in lista_livros:
-            if len(livro) == 4 and livro[0].strip() == titulo.strip() and livro[3] == "":
-                livro[3] = datetime.now().strftime('%Y-%m-%d')  # Registrar a data de devolução
+            if len(livro) == 5 and livro[0].strip() == titulo.strip() and livro[4] == "":
+                livro[4] = datetime.now().strftime('%Y-%m-%d')  # Regista a data de devolução
                 devolvido = True
             emprestimos.append(livro)
 
     if devolvido:
-        # Atualizar o arquivo emprestimos_DB.csv com a devolução
+        # Atualiza o arquivo emprestimos_DB.csv com a devolução
         with open(dir.dirEmprestimos, 'w', newline='') as emprestimos_file:
             writer = csv.writer(emprestimos_file)
             writer.writerows(emprestimos)
@@ -79,6 +83,7 @@ def registar_devolucao(titulo):
         print(f"O livro '{titulo}' não foi encontrado na lista de empréstimos pendentes.")
         input("Pressione Enter para continuar...")
 
+# Função para organizar a fila de espera
 def organizar_fila_espera(titulo):
     fila_espera = []
 
@@ -115,3 +120,13 @@ def organizar_fila_espera(titulo):
     else:
         print("Fila de espera não foi alterada.")
         input("Pressione Enter para continuar...")
+
+# Função para calcular em dias úteis a data de devolução
+def data_devolução(data_inicial):
+    dias_adicionados = 0
+    data_final = data_inicial
+    while dias_adicionados < 10:
+        data_final += timedelta(days=1)
+        if data_final.weekday() < 5:
+            dias_adicionados += 1
+    return data_final
