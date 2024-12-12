@@ -2,9 +2,13 @@ import diretorios as dir
 
 # Função para registar um novo utilizador
 def record_user(utilizador):
-    usuarios = verificar_utilizador(utilizador) 
+    # Validação inicial
+    if not utilizador.strip():
+        return "O utilizador não pode ser vazio."   
+    
+    usuarios = procurar_utilizador(utilizador) 
      
-    if usuarios == "O utilizador já existe.":
+    if usuarios == True:
         print("O utilizador já existe.")
         input("Pressione Enter para continuar...")
         return
@@ -32,22 +36,6 @@ def record_user(utilizador):
         return
     
 # Função para verificar se um utilizador está registado
-def verificar_utilizador(utilizador):
-    # Validação inicial
-    if not utilizador.strip():
-        return "O utilizador não pode ser vazio."
-    
-    # Inicia o dicionário de usuários
-    usuarios = {}
-    with open(dir.dirUsers, 'r') as lista_users:
-        for linha in lista_users:
-            id_usuario, nome_usuario = linha.strip().split(":", 1)
-            usuarios[int(id_usuario)] = nome_usuario
-         
-    # Verifica se o utilizador está registado
-    if utilizador in usuarios.values():
-        return "O utilizador já existe."
-
 def procurar_utilizador(utilizador):
     # Inicia o dicionário de usuários
     usuarios = {}
