@@ -117,7 +117,7 @@ def main():
             elif sub_opcao == '3.3':
                 print("Organizar Fila de Espera")
                 titulo = input("Introduza o título do livro para organizar a fila de espera: ")
-                gEmprestimos.organizar_fila_espera(titulo)
+                gEmprestimos.filas_espera(titulo)
                 
             else:
                 print("Sub-opção inválida!")

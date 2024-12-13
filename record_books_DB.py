@@ -146,3 +146,20 @@ def atualizar_informacoes_livro(titulo):
             print(char, end="", flush=True)
             time.sleep(0.05)
         print("\n")
+
+# Função para procurar um livro pelo título        
+def procura_livro(titulo):
+    livros = []
+   
+    with open(dir.dirBooks, 'r', newline='') as file:
+        lista_livros = csv.reader(file)
+        for livro in lista_livros:
+            if len(livro) == 4:  
+                titulo_no_csv = livro[1].strip()
+                if titulo_no_csv == titulo.strip():
+                    livros.append(livro)
+                    break
+    if livros:
+        return True
+    else:
+        return False
