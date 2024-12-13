@@ -5,16 +5,13 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import logging
 
-# Configure logging
-logging.basicConfig(level=logging.ERROR, format='%(asctime)s %(levelname)s:%(message)s')
-
-def enviar_email(destinatario, assunto, mensagem):
+def enviar_email(destinatarios, assunto, mensagem):
     remetente = 'biblioteca.estarreja.py@gmail.com'
     smtp_server = "smtp.gmail.com"
-    port = 587  # For starttls
+    port = 587 
     sender_email = "biblioteca.estarreja.py@gmail.com"
-    password = os.getenv('EMAIL_PASSWORD')  # Use environment variable for password
-
+    password = '.123456789.'
+    
     # Create a secure SSL context
     context = ssl.create_default_context()
 
@@ -25,18 +22,19 @@ def enviar_email(destinatario, assunto, mensagem):
         server.login(sender_email, password)
         msg = MIMEMultipart()
         msg['From'] = remetente
-        msg['To'] = destinatario
+        msg['To'] = ", ".join(destinatarios)
         msg['Subject'] = assunto
         msg.attach(MIMEText(mensagem, 'plain'))
-        server.sendmail(sender_email, destinatario, msg.as_string())
-    except Exception as event:
-        logging.error(f"Erro ao enviar email: {event}")
+        server.sendmail(sender_email, destinatarios, msg.as_string())
+    except (smtplib.SMTPException, ssl.SSLError) as event:
+        logging.error(f"Erro ao enviar email para {destinatarios}: {event}")
     finally:
         server.quit()
 
 if __name__ == "__main__":
     # Exemplo de uso
-    destinatario = 'biblioteca.estarreja.py@gmail.com'
+    # Example usage for testing purposes only. Do not use hardcoded credentials in production.
+    destinatarios = ['biblioteca.estarreja.py@gmail.com']
     assunto = 'Assunto do Email'
     mensagem = 'Corpo do email'
-    enviar_email(destinatario, assunto, mensagem)
+    enviar_email(destinatarios, assunto, mensagem)
