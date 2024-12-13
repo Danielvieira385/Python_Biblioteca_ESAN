@@ -8,7 +8,7 @@ import search_books as sBook
 import backup_function as backup
 import gestao_emprestimos as gEmprestimos
 
-def limpar_tela():##
+def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def exibir_titulo(titulo):
@@ -106,7 +106,7 @@ def main():
             if sub_opcao == '3.1':
                 print("Registar Empréstimo")
                 titulo = input("Introduza o título do livro que pretende emprestar: ")
-                utilizador = input("Introduza o nome do utilizador que possui o livro: ")
+                utilizador = input("Introduza o nome do utilizador: ")
                 gEmprestimos.registar_emprestimo(titulo, utilizador)
 
             elif sub_opcao == '3.2':
