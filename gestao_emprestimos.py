@@ -36,6 +36,7 @@ def registar_emprestimo(titulo, utilizador):
                     info_livro_utilizador = csv.writer(emprestimos_file)
                     info_livro_utilizador.writerow([titulo, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
                     print(f"O livro '{titulo}' foi emprestado ao utilizador {utilizador}.")
+                    print("Data de devolução prevista:", previsao_devolucao.strftime('%Y-%m-%d'))
                 # Regista o empréstimo para o histórico
                 with open(dir.dirHistorico, 'a', newline='') as historico_file:
                     info_livro_utilizador = csv.writer(historico_file)
