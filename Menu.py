@@ -7,6 +7,7 @@ import record_books_DB as rBook
 import search_books as sBook
 import backup_function as backup
 import gestao_emprestimos as gEmprestimos
+import recomendacoes
 
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
