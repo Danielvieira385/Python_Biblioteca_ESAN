@@ -151,7 +151,7 @@ def atualizar_informacoes_livro(titulo):
 def procura_livro(titulo):
     livros = []
    
-    with open(dir.dirBooks, 'r', newline='', encoding='latin-1') as file:
+    with open(dir.dirBooks, 'r', newline='') as file:
         lista_livros = csv.reader(file)
         for livro in lista_livros:
             if len(livro) == 4:  

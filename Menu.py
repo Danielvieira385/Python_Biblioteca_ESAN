@@ -7,6 +7,7 @@ import record_books_DB as rBook
 import search_books as sBook
 import backup_function as backup
 import gestao_emprestimos as gEmprestimos
+import recomendacoes
 
 
 def limpar_tela():
@@ -42,6 +43,7 @@ def exibir_menu():
     print("║     [5.2] Pesquisa por Título                    ║")
     print("║     [5.3] Aplicar Filtros Específicos            ║")
     print("║ [6] Sistema de Recomendações                     ║")
+    print("║     [6.1] Recomendar Livros por Gênero           ║")
     print("║ [7] Cópia de Segurança e Carregamento de Dados   ║")
     print("║     [7.1] Realizar Cópia de Segurança            ║")
     print("║     [7.2] Reposição de Cópia de Segurança        ║")
@@ -177,7 +179,16 @@ def main():
                 
         elif opcao == '6':
             print("\nSistema de Recomendações")
-     
+            sub_opcao = input("Escolha uma sub-opção (6.1): ")
+            if sub_opcao == '6.1':
+                utilizador = input("Introduza o nome do utilizador: ")
+                livros_recomendados = recomendacoes.recomendar_livros_por_genero(utilizador)
+                print("Livros recomendados:")
+                for livro in livros_recomendados:
+                    print(f"Título: {livro[1]}, Autor: {livro[0]}, Gênero: {livro[3]}, Ano: {livro[2]}")
+                input("Pressione Enter para continuar...")
+            else:
+                print("Sub-opção inválida!")
               
         elif opcao == '7':
             print("\nCópia de Segurança e Carregamento de Dados")
