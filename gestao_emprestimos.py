@@ -50,6 +50,51 @@ def registar_emprestimo(titulo, utilizador):
         print(f"O utilizador {utilizador} não está registado.")
         input("Pressione Enter para continuar...")
 
+# Função para registar o empréstimo dos livros com informações completas
+def registar_emprestimo_completo():
+    titulo = input("Introduza o título do livro: ")
+    autor = input("Introduza o autor do livro: ")
+    genero = input("Introduza o gênero do livro: ")
+    data_publicacao = input("Introduza a data de publicação do livro (AAAA): ")
+    utilizador = input("Introduza o nome do utilizador: ")
+
+    # Verifica se o utilizador está registado
+    utilizador_encontrado = users.procurar_utilizador(utilizador)
+    livro_encontrado = books.procura_livro(titulo)
+    livro_emprestado = livro_disponivel(titulo)
+    
+    if utilizador_encontrado:
+        if livro_encontrado:
+            if livro_emprestado:
+                print(f"O livro '{titulo}' já se encontra emprestado.")
+                decisao = input("Deseja ir para a fila de espera? (s/n): ").lower()
+                if decisao == "s":
+                    with open(dir.dirFilaEspera, 'a', newline='') as fila_file:
+                        info_livro_utilizador = csv.writer(fila_file)
+                        info_livro_utilizador.writerow([titulo, utilizador])
+                        print(f"O utilizador {utilizador} foi adicionado à fila de espera para o livro '{titulo}'.")
+                        input("Pressione Enter para continuar...")
+                        return
+            else:
+                data_atual = datetime.now().strftime('%Y-%m-%d')
+                previsao_devolucao = data_devolucao(datetime.now())
+                with open(dir.dirEmprestimos, 'a', newline='') as emprestimos_file:
+                    info_livro_utilizador = csv.writer(emprestimos_file)
+                    info_livro_utilizador.writerow([titulo, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
+                    print(f"O livro '{titulo}' foi emprestado ao utilizador {utilizador}.")
+                    print("Data de devolução prevista:", previsao_devolucao.strftime('%Y-%m-%d'))
+                with open(dir.dirHistorico, 'a', newline='') as historico_file:
+                    info_livro_utilizador = csv.writer(historico_file)
+                    info_livro_utilizador.writerow([titulo, utilizador, data_atual])
+                    input("Pressione Enter para continuar...")
+                    return
+        else:
+            print(f"O livro '{titulo}' não foi encontrado.")
+            input("Pressione Enter para continuar...")
+    else:
+        print(f"O utilizador {utilizador} não está registado.")
+        input("Pressione Enter para continuar...")
+
 # Função para registar a devolução dos livros
 def registar_devolucao(titulo):
     emprestimos = []
