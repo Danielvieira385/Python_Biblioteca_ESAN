@@ -172,7 +172,11 @@ def main():
                 
         elif opcao == '6':
             print("\nSistema de Recomendações")
-            # Implementar sistema de recomendações
+            utilizador = input("Introduza o nome do utilizador: ")
+            recomendacoes = recomendacoes.recomendar_livros(utilizador)
+            print("\nRecomendações de Livros:")
+            for livro in recomendacoes:
+                print(f"Título: {livro['titulo']}, Autor: {livro['autor']}, Género: {livro['genero']}")
 
         elif opcao == '7':
             print("\nCópia de Segurança e Carregamento de Dados")
