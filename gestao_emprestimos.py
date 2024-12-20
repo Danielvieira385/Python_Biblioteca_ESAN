@@ -80,7 +80,7 @@ def registar_emprestimo_completo():
                 previsao_devolucao = data_devolucao(datetime.now())
                 with open(dir.dirEmprestimos, 'a', newline='') as emprestimos_file:
                     info_livro_utilizador = csv.writer(emprestimos_file)
-                    info_livro_utilizador.writerow([titulo, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
+                    info_livro_utilizador.writerow([titulo, autor, genero, data_publicacao, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
                     print(f"O livro '{titulo}' foi emprestado ao utilizador {utilizador}.")
                     print("Data de devolução prevista:", previsao_devolucao.strftime('%Y-%m-%d'))
                 with open(dir.dirHistorico, 'a', newline='') as historico_file:

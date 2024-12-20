@@ -7,7 +7,7 @@ import record_books_DB as rBook
 import search_books as sBook
 import backup_function as backup
 import gestao_emprestimos as gEmprestimos
-import recomendacoes
+
 
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -124,7 +124,6 @@ def main():
             elif sub_opcao == '3.4':
                 print("Registar Empréstimo Completo")
                 gEmprestimos.registar_emprestimo_completo()
-                
             else:
                 print("Sub-opção inválida!")
                 
