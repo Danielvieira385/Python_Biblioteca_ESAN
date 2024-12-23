@@ -62,7 +62,7 @@ def main():
     while True:
         exibir_menu()
         opcao = input("Escolha uma opção: ")
-        
+        # Menu gerir utilizadores
         if opcao == '1':
             print("\nGerir Utilizadores")
             sub_opcao = input("Escolha uma sub-opção (1.1 ou 1.2): ")
@@ -79,7 +79,7 @@ def main():
 
             else:
                 print("Sub-opção inválida!")
-                
+        # Menu gerir livros        
         elif opcao == '2':
             print("\nGerir Livros")
             sub_opcao = input("Escolha uma sub-opção (2.1, 2.2 ou 2.3): ")
@@ -103,7 +103,7 @@ def main():
                 rBook.atualizar_informacoes_livro(titulo)
             else:
                 print("Sub-opção inválida!")
-                
+        # Menu empréstimos e devoluções       
         elif opcao == '3':
             print("\nEmpréstimos e Devoluções")
             sub_opcao = input("Escolha uma sub-opção (3.1, 3.2, 3.3 ou 3.4): ")
@@ -128,7 +128,7 @@ def main():
                 gEmprestimos.registar_emprestimo_completo()
             else:
                 print("Sub-opção inválida!")
-                
+        # Menu consultar histórico de atividades        
         elif opcao == '4':
             print("\nConsultar Histórico de Atividades")
             sub_opcao = input("Escolha uma sub-opção (4.1 ou 4.2): ")
@@ -140,7 +140,7 @@ def main():
                 # Implementar função de histórico por utilizador
             else:
                 print("Sub-opção inválida!")
-                
+        # Menu pesquisa e consulta        
         elif opcao == '5':
             print("\nPesquisa e Consulta")
             sub_opcao = input("Escolha uma sub-opção (5.1, 5.2 ou 5.3): ")
@@ -176,7 +176,7 @@ def main():
                 input("Pressione Enter para continuar...")
             else:
                 print("Sub-opção inválida!")
-                
+        # Menu sistema de recomendações       
         elif opcao == '6':
             print("\nSistema de Recomendações")
             sub_opcao = input("Escolha uma sub-opção (6.1): ")
@@ -189,7 +189,7 @@ def main():
                 input("Pressione Enter para continuar...")
             else:
                 print("Sub-opção inválida!")
-              
+        # Menu cópia de segurança e carregamento de dados    
         elif opcao == '7':
             print("\nCópia de Segurança e Carregamento de Dados")
             sub_opcao = input("Escolha uma sub-opção (7.1 ou 7.2): ")
@@ -229,7 +229,7 @@ def main():
             else:
                 print("Sub-opção inválida!")
                 input("Pressione Enter para continuar...")
-
+        # Menu sair
         elif opcao == '8':
             animacao_saida()
             break
