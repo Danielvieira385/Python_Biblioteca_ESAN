@@ -146,13 +146,6 @@ def filas_espera(titulo):
     if devolver.lower() == "s":
         # Envia um e-mail ao primeiro utilizador da fila
         email.enviar_email(titulo)
-        
-        # Atualiza a fila de espera
-        with open(dir.dirFilaEspera, 'w', newline='') as file:
-            writer = csv.writer(file)
-            for utilizador in fila_espera:
-                writer.writerow([titulo, utilizador])
-        
         print(f"Utilizador {fila_espera[0]} foi notificado.")
         input("Pressione Enter para continuar...")
     else:
