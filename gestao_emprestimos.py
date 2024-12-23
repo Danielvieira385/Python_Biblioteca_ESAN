@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import diretorios as dir
 import record_users_DB as users
 import record_books_DB as books
+import enviar_notificacao as email
 
 # Função para registar o empréstimo dos livros
 def registar_emprestimo(titulo, utilizador):
@@ -140,12 +141,12 @@ def filas_espera(titulo):
     for i, utilizador in enumerate(fila_espera, 1):
         print(f"{i}. {utilizador}")
 
-    # Opcional: Podemos remover o primeiro usuário da fila quando o livro for devolvido
+    
     devolver = input(f"Deseja notificar o primeiro utilizador da fila ({fila_espera[0]}) sobre a disponibilidade do livro? (s/n): ")
     if devolver.lower() == "s":
-        # Remove o primeiro da fila de espera
-        fila_espera.pop(0)
-
+        # Envia um e-mail ao primeiro utilizador da fila
+        email.enviar_email(titulo)
+        
         # Atualiza a fila de espera
         with open(dir.dirFilaEspera, 'w', newline='') as file:
             writer = csv.writer(file)
