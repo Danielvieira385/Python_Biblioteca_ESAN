@@ -17,3 +17,8 @@ def enviar_email(livro):
     smtp.sendmail(utilizador, destinatario, mensagem_completa)
     smtp.quit()
     print('E-mail enviado com sucesso')
+<<<<<<< HEAD
+=======
+
+enviar_email("Python para todos")
+>>>>>>> c19ecc724140883e99d4a3fe062b558ef0fdbe8c
