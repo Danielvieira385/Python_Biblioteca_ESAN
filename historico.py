@@ -17,6 +17,6 @@ def consultar_historico_por_utilizador(nome_utilizador):
     with open(dir.dirHistorico, 'r') as historico_file:
         lista_historico = csv.reader(historico_file)
         for entrada in lista_historico:
-            if len(entrada) >= 3 and entrada[1].strip().lower() == nome_utilizador.strip().lower():
+            if len(entrada) >= 3 and entrada[4].strip().lower() == nome_utilizador.strip().lower():
                 historico.append(entrada)
     return historico

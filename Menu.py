@@ -134,14 +134,14 @@ def main():
                 titulo = input("Introduza o título do livro: ")
                 historico = hist.consultar_historico_por_livro(titulo)
                 for entrada in historico:
-                    print(f"Título: {entrada[0]}, Utilizador: {entrada[1]}, Data: {entrada[2]}")
+                    print(f"Título: {entrada[0]}, Utilizador: {entrada[4]}, Data: {entrada[5]}")
                 input("Pressione Enter para continuar...")
             elif sub_opcao == '4.2':
                 print("Histórico por Utilizador")
                 utilizador = input("Introduza o nome do utilizador: ")
                 historico = hist.consultar_historico_por_utilizador(utilizador)
                 for entrada in historico:
-                    print(f"Título: {entrada[0]}, Utilizador: {entrada[1]}, Data: {entrada[2]}")
+                    print(f"Título: {entrada[0]}, Utilizador: {entrada[4]}, Data: {entrada[5]}")
                 input("Pressione Enter para continuar...")
             else:
                 print("Sub-opção inválida!")
