@@ -1,4 +1,5 @@
 import record_books_DB as rb
+import diretorios as dir
 import csv
 
 # Filtra a lista de livros pelo título fornecido, seja em maiúsculas ou minúsculas
@@ -29,4 +30,13 @@ def filter_books(criteria):
 
     return filtered_books
 
-
+# Função para procurar um livro pelo título        
+def procurar_info_livro(titulo):
+    titulo_do_livro = titulo
+    
+    with open(dir.dirBooks, 'r') as file:
+        lista_livros = csv.reader(file)
+        for livro in lista_livros:
+                if titulo_do_livro == livro[1].strip():  
+                    informacao_livro = livro
+                    return informacao_livro

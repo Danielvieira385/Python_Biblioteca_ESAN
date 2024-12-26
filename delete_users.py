@@ -1,5 +1,6 @@
 import diretorios as dirs
 
+# Remove um utilizador do arquivo de utilizadores
 def remove_user(utilizador=None, id_usuario=None):
     # Validação inicial
     if not utilizador and not id_usuario:

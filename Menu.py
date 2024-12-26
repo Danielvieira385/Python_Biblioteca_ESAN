@@ -35,7 +35,6 @@ def exibir_menu():
     print("║     [3.1] Registar Empréstimo                    ║")
     print("║     [3.2] Registar Devolução                     ║")
     print("║     [3.3] Organizar Fila de Espera               ║")
-    print("║     [3.4] Registar Empréstimo Completo           ║")
     print("║ [4] Consultar Histórico de Atividades            ║")
     print("║     [4.1] Histórico por Livro                    ║")
     print("║     [4.2] Histórico por Utilizador               ║")
@@ -112,7 +111,7 @@ def main():
                 print("Registar Empréstimo")
                 titulo = input("Introduza o título do livro que pretende emprestar: ")
                 utilizador = input("Introduza o nome do utilizador: ")
-                gEmprestimos.registar_emprestimo(titulo, utilizador)
+                gEmprestimos.registar_emprestimo_completo(titulo, utilizador)
 
             elif sub_opcao == '3.2':
                 print("Registar Devolução")
@@ -124,9 +123,6 @@ def main():
                 titulo = input("Introduza o título do livro para organizar a fila de espera: ")
                 gEmprestimos.filas_espera(titulo)
                 
-            elif sub_opcao == '3.4':
-                print("Registar Empréstimo Completo")
-                gEmprestimos.registar_emprestimo_completo()
             else:
                 print("Sub-opção inválida!")
         # Menu consultar histórico de atividades        

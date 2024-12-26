@@ -1,6 +1,7 @@
 import csv
 import diretorios as dir
 
+# Função consultar histórico por livro
 def consultar_historico_por_livro(titulo_livro):
     historico = []
     with open(dir.dirHistorico, 'r') as historico_file:
@@ -10,6 +11,7 @@ def consultar_historico_por_livro(titulo_livro):
                 historico.append(entrada)
     return historico
 
+# Função consultar histórico por utilizador
 def consultar_historico_por_utilizador(nome_utilizador):
     historico = []
     with open(dir.dirHistorico, 'r') as historico_file:

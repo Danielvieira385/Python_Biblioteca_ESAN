@@ -4,6 +4,7 @@ import diretorios as dir
 import record_users_DB as users
 import record_books_DB as books
 import enviar_notificacao as email
+import search_books as info_livro
 
 # Função para registar o empréstimo dos livros
 def registar_emprestimo(titulo, utilizador):
@@ -52,17 +53,19 @@ def registar_emprestimo(titulo, utilizador):
         input("Pressione Enter para continuar...")
 
 # Função para registar o empréstimo dos livros com informações completas
-def registar_emprestimo_completo():
-    titulo = input("Introduza o título do livro: ")
-    autor = input("Introduza o autor do livro: ")
-    genero = input("Introduza o gênero do livro: ")
-    data_publicacao = input("Introduza a data de publicação do livro (AAAA): ")
-    utilizador = input("Introduza o nome do utilizador: ")
-
+def registar_emprestimo_completo(titulo, utilizador):
+        
     # Verifica se o utilizador está registado
     utilizador_encontrado = users.procurar_utilizador(utilizador)
     livro_encontrado = books.procura_livro(titulo)
     livro_emprestado = livro_disponivel(titulo)
+    detalhes_livro = info_livro.procurar_info_livro(titulo)
+    
+    # Informação do livro a ser emprestado
+    autor = detalhes_livro[0]
+    titulo = detalhes_livro[1]
+    data_publicacao = detalhes_livro[2]
+    genero = detalhes_livro[3]
     
     if utilizador_encontrado:
         if livro_encontrado:
@@ -79,14 +82,18 @@ def registar_emprestimo_completo():
             else:
                 data_atual = datetime.now().strftime('%Y-%m-%d')
                 previsao_devolucao = data_devolucao(datetime.now())
+                    
+                    # Regista o empréstimo do livro
                 with open(dir.dirEmprestimos, 'a', newline='') as emprestimos_file:
                     info_livro_utilizador = csv.writer(emprestimos_file)
                     info_livro_utilizador.writerow([titulo, autor, genero, data_publicacao, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
                     print(f"O livro '{titulo}' foi emprestado ao utilizador {utilizador}.")
                     print("Data de devolução prevista:", previsao_devolucao.strftime('%Y-%m-%d'))
+                    
+                    # Regista o empréstimo para o histórico
                 with open(dir.dirHistorico, 'a', newline='') as historico_file:
                     info_livro_utilizador = csv.writer(historico_file)
-                    info_livro_utilizador.writerow([titulo, utilizador, data_atual])
+                    info_livro_utilizador.writerow([titulo, autor, genero, data_publicacao, utilizador, data_atual, previsao_devolucao.strftime('%Y-%m-%d'), ""])
                     input("Pressione Enter para continuar...")
                     return
         else:
@@ -105,8 +112,8 @@ def registar_devolucao(titulo):
     with open(dir.dirEmprestimos, 'r', newline='') as emprestimos_file:
         lista_livros = csv.reader(emprestimos_file)
         for livro in lista_livros:
-            if len(livro) == 5 and livro[0].strip() == titulo.strip() and livro[4] == "":
-                livro[4] = datetime.now().strftime('%Y-%m-%d')  # Regista a data de devolução
+            if len(livro) == 8 and livro[0].strip() == titulo.strip() and livro[7] == "":
+                livro[7] = datetime.now().strftime('%Y-%m-%d')  # Regista a data de devolução
                 devolvido = True
             emprestimos.append(livro)
 
@@ -115,6 +122,12 @@ def registar_devolucao(titulo):
         with open(dir.dirEmprestimos, 'w', newline='') as emprestimos_file:
             writer = csv.writer(emprestimos_file)
             writer.writerows(emprestimos)
+        
+        # Atualiza o arquivo historico_DB.csv com a devolução
+        with open(dir.dirHistorico, 'w', newline='') as emprestimos_file:
+            writer = csv.writer(emprestimos_file)
+            writer.writerows(emprestimos)
+            
         print(f"O livro '{titulo}' foi devolvido com sucesso.")
         input("Pressione Enter para continuar...")
     else:
@@ -175,3 +188,5 @@ def livro_disponivel(titulo):
         return True
     else:
         return False
+    
+   
