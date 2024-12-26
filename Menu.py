@@ -8,6 +8,7 @@ import search_books as sBook
 import backup_function as backup
 import gestao_emprestimos as gEmprestimos
 import recomendacoes
+import historico as hist
 
 
 def limpar_tela():
@@ -134,10 +135,18 @@ def main():
             sub_opcao = input("Escolha uma sub-opção (4.1 ou 4.2): ")
             if sub_opcao == '4.1':
                 print("Histórico por Livro")
-                # Implementar função de histórico por livro
+                titulo = input("Introduza o título do livro: ")
+                historico = hist.consultar_historico_por_livro(titulo)
+                for entrada in historico:
+                    print(f"Título: {entrada[0]}, Utilizador: {entrada[1]}, Data: {entrada[2]}")
+                input("Pressione Enter para continuar...")
             elif sub_opcao == '4.2':
                 print("Histórico por Utilizador")
-                # Implementar função de histórico por utilizador
+                utilizador = input("Introduza o nome do utilizador: ")
+                historico = hist.consultar_historico_por_utilizador(utilizador)
+                for entrada in historico:
+                    print(f"Título: {entrada[0]}, Utilizador: {entrada[1]}, Data: {entrada[2]}")
+                input("Pressione Enter para continuar...")
             else:
                 print("Sub-opção inválida!")
         # Menu pesquisa e consulta        
