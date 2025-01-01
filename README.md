@@ -22,3 +22,15 @@ Menu 3 - Gestão de requisição e devolução de livros
 -  3.1 - Regista a requisição de um livro
 -  3.2 - Regista a devolução de um livro
 -  3.3 - Organiza e conulta a disponibilidade de um livro
+
+Menu 4 - Consultar histórico de atividades
+- 4.1 - Consulta o histórico de atividade desse livro (Histórico de quem e quando o requesitou)
+- 4.2 - Histórico por utilizador (Histórico de livros requesitados com a respetiva data)
+
+Menu 5 - Pesquisa e consulta
+- 5.1 - Pesquisar livros existentes pelo nome do autor
+- 5.2 - Pesquisar livros existentes pelo titulo do libro
+- 5.3 - Pesquisa com filtros especificos (Autor, Titulo, Data, Categoria)
+
+Menu 6 - Sistemas de recomendações
+- 6.1 - Analisa o historico de livros requesitados pelo utilizador e recomenda com base na categoria dos livros.
