@@ -1,6 +1,6 @@
 Biblioteca de Estarreja
 
-Projeto na líguagem de programação Python no ambito da disciplina Algoritmo e Programação
+Projeto na líguagem de programação Python no ambito da disciplina Algoritmo e Programação, lecionado pelo professor João Silva
 
 Desenvolvido por:
 - Daniel Vieira
@@ -34,3 +34,7 @@ Menu 5 - Pesquisa e consulta
 
 Menu 6 - Sistemas de recomendações
 - 6.1 - Analisa o historico de livros requesitados pelo utilizador e recomenda com base na categoria dos livros.
+
+Menu 7 - Sistema de cópia de segurança e carregamento de dados
+- 7.1 - Realiza uma cópia de segurança dos ficheiros presentes no repositório
+- 7.1 - Repõe uma cópia de segurança dos ficheiros presentes no repositório backup para o repositório original
