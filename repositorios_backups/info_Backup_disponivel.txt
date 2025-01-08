@@ -1,4 +1,4 @@
 
-Cópia de segurança realizado em: 11-12-2024 11:16
+Cópia de segurança realizado em: 08-01-2025 14:47
 Cópia de segurança contem informação dos seguintes repositórios:
 Livros, Users, Fila de espera, Empréstimos.

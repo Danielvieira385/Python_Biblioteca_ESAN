@@ -33,8 +33,14 @@ def realizarBackupRepositorios():
         infoEmprestimos = emprestimos.read()
     with open(dir.dirEmprestimosBackup, "w") as guardarBackupEmprestimos:
         guardarBackupEmprestimos.write(infoEmprestimos)
+        
+    # Backup do repositorio de Histórico de Empréstimos
+    with open(dir.dirHistorico, 'r') as historico:
+        infoHistorico = historico.read()
+    with open(dir.dirHistoricoBackup, "w") as guardarBackupHistorico:
+        guardarBackupHistorico.write(infoHistorico)   
     
-    print("Cópia de Segurança dos repositórios realizado com sucesso:\nLivros, Users, Fila de espera, Empréstimos.")
+    print("Cópia de Segurança dos repositórios realizado com sucesso:\nLivros, Users, Fila de espera, Empréstimos e Historico de ações.")
 
 # Função para repor os repositórios a partir do backup
 def reporBackupRepositorios():
@@ -61,5 +67,11 @@ def reporBackupRepositorios():
         infoEmprestimosBackup = emprestimosBackup.read()
     with open(dir.dirEmprestimos, "w") as reporBackupEmprestimos:
         reporBackupEmprestimos.write(infoEmprestimosBackup)
+    
+    # Reposição do repositorio de Histórico de Empréstimos
+    with open(dir.dirHistoricoBackup, 'r') as historicoBackup:
+        infoHistoricoBackup = historicoBackup.read()
+    with open(dir.dirHistorico, "w") as reporBackupHistorico:
+        reporBackupHistorico.write(infoHistoricoBackup)
 
-    print("Reposição dos repositórios realizada com sucesso:\nLivros, Users, Fila de espera, Empréstimos.")
+    print("Reposição dos repositórios realizada com sucesso:\nLivros, Users, Fila de espera, Empréstimos e Historico de ações.")
