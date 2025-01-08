@@ -1,6 +1,7 @@
 import csv
 import diretorios as dir
 
+# Função para recomendar livros
 def recomendar_livros_por_genero(utilizador):
     generos_requisitados = set()
     livros_recomendados = []

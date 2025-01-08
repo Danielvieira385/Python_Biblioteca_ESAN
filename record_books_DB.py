@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 import diretorios as dir
 
+# Função para registar um livro na base de dados
 def recordBook(autor, title_book, genero_book, publish_date):
     book_info = []
 
@@ -58,6 +59,7 @@ def get_all_books():
         return []
     return books
 
+# Função para listar todos os livros na base de dados
 def remover_livro(titulo):
     livros = []
     livro_removido = False
@@ -96,6 +98,7 @@ def remover_livro(titulo):
             time.sleep(0.05)
         print("\n")
 
+# Função para atualizar as informações de um livro na base de dados
 def atualizar_informacoes_livro(titulo):
     livros = []
     livro_atualizado = False
