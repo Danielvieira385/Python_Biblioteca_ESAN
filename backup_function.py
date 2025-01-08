@@ -6,7 +6,7 @@ def realizarBackupRepositorios():
     # Registo da data e hora do backup
     with open(dir.dirInfoBackupDisponivel, 'w') as backup_info:
         backup_info.write(f"\nCópia de segurança realizado em: {datetime.datetime.now().strftime('%d-%m-%Y %H:%M')}") 
-        repositorios = ["Livros", "Users", "Fila de espera", "Empréstimos"]
+        repositorios = ["Livros", "Users", "Fila de espera", "Empréstimos", "Histórico de ações"]
         repositorios_str = ", ".join(repositorios)
         backup_info.write(f"\nCópia de segurança contem informação dos seguintes repositórios:\n{repositorios_str}.") 
     
