@@ -6,8 +6,8 @@ def enviar_email(livro):
     utilizador = 'biblioteca.estarreja.py'
     senha = 'smbr riqh njiz gpmd'
     mensagem = f'Venho por este meio solicitar a devolucao do livro {livro}. \nObrigado.\n\nCumprimentos,\nBiblioteca de Estarreja'
-    destinatario = ['biblioteca.estarreja.py@gmail.com']
-    # destinatario = ['jssilva@ua.pt'] # Professor João Silva
+    # destinatario = ['biblioteca.estarreja.py@gmail.com']
+    destinatario = ['jssilva@ua.pt'] # Professor João Silva
     assunto = f'Devolucao do livro {livro}'
     
     

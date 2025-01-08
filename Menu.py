@@ -73,7 +73,7 @@ def main():
             elif sub_opcao == '1.2':
                 print("Eliminar Utilizador")
                 utilizador = input('Introduza o Utilizador (ou pressione ENTER para continuar): ') or None
-                id_usuario = input('IIntroduza o ID do Utilizador (ou pressione ENTER para continuar): ') or None
+                id_usuario = input('Introduza o ID do Utilizador (ou pressione ENTER para continuar): ') or None
                 dUser.remove_user(utilizador=utilizador, id_usuario=id_usuario)
 
             else:
