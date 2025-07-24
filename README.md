@@ -4,7 +4,6 @@ Projeto na líguagem de programação Python no ambito da disciplina Algoritmo e
 
 Desenvolvido por:
 - Daniel Vieira
-- Gonçalo 
 - Toni Correia
 
 Visão geral das funcionalidades da apliacação:
