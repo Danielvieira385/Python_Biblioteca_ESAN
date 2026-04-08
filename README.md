@@ -1,39 +1,47 @@
-Biblioteca de Estarreja
+# 📚 Library Management System - Estarreja (Python)
 
-Projeto na líguagem de programação Python no ambito da disciplina Algoritmo e Programação, lecionado pelo professor João Silva
+[**English**](#english) | [**Português**](#português)
 
-Desenvolvido por:
-- Daniel Vieira
-- Toni Correia
+---
 
-Visão geral das funcionalidades da apliacação:
+<a name="english"></a>
+## 🇺🇸 English
 
-Menu 1 - Gestão de utilizadores
--  1.1 - Regista novos utilizadores para requisição de livros
--  1.2 - Remove utilizador que não sejam mais necessários apartir do ID de utilizador ou pelo nome de utilizador
+### 📝 Description
+Developed for the **Algorithms and Programming** course at the **University of Aveiro**, this project was my first deep dive into programming logic. It consists of a complete management system for a library, handling users, books, and loans via a console interface.
 
-Menu 2 - Gestão de Livros
--  2.1 - Regista um livro no base dados da bibliteca, sendo necessário quatro informações (Autor, Título, Data de Publicação e Categoria)
--  2.2 - Remove um livro do base dados
--  2.3 - Atualiza informações de um livro
+### 🚀 Key Features
+- **User & Inventory Management:** Full registration and removal systems for library members and book databases.
+- **Loan Workflow:** Management of book requests, returns, and real-time availability tracking.
+- **Advanced Search:** Multi-filter search engine (Author, Title, Date, and Category).
+- **Activity Logs:** Detailed history tracking for both books (who borrowed them) and users (what they borrowed).
+- **Recommendation Engine:** An intelligent system that suggests books based on the user's borrowing history and preferred categories.
+- **Data Safety:** Built-in Backup and Restore system to ensure data persistence and security.
 
-Menu 3 - Gestão de requisição e devolução de livros
--  3.1 - Regista a requisição de um livro
--  3.2 - Regista a devolução de um livro
--  3.3 - Organiza e conulta a disponibilidade de um livro
+### 🛠️ Tech Stack
+- **Language:** Python 3.x
+- **Concepts Applied:** Control structures, file handling, data persistence, and functional logic.
 
-Menu 4 - Consultar histórico de atividades
-- 4.1 - Consulta o histórico de atividade desse livro (Histórico de quem e quando o requesitou)
-- 4.2 - Histórico por utilizador (Histórico de livros requesitados com a respetiva data)
+---
 
-Menu 5 - Pesquisa e consulta
-- 5.1 - Pesquisar livros existentes pelo nome do autor
-- 5.2 - Pesquisar livros existentes pelo titulo do libro
-- 5.3 - Pesquisa com filtros especificos (Autor, Titulo, Data, Categoria)
+<a name="português"></a>
+## 🇵🇹 Português
 
-Menu 6 - Sistemas de recomendações
-- 6.1 - Analisa o historico de livros requesitados pelo utilizador e recomenda com base na categoria dos livros.
+### 📝 Descrição
+Desenvolvido para a unidade curricular de **Algoritmos e Programação** na **Universidade de Aveiro**, este projeto marcou o meu início no estudo da lógica de programação. O sistema permite a gestão completa de uma biblioteca (Estarreja), controlando utilizadores, livros e empréstimos.
 
-Menu 7 - Sistema de cópia de segurança e carregamento de dados
-- 7.1 - Realiza uma cópia de segurança dos ficheiros presentes no repositório
-- 7.1 - Repõe uma cópia de segurança dos ficheiros presentes no repositório backup para o repositório original
+### 🚀 Funcionalidades Principais
+- **Gestão de Utilizadores e Livros:** Registo, remoção e atualização de membros e do catálogo de livros.
+- **Fluxo de Requisições:** Gestão de empréstimos e devoluções com consulta de disponibilidade.
+- **Pesquisa Avançada:** Motor de busca com filtros específicos (Autor, Título, Data e Categoria).
+- **Histórico de Atividade:** Consulta detalhada de quem requisitou cada livro e que livros cada utilizador leu.
+- **Sistema de Recomendações:** Algoritmo que analisa o histórico do utilizador e recomenda livros com base nas categorias mais lidas.
+- **Segurança de Dados:** Sistema integrado de Cópia de Segurança (Backup) e Restauro para garantir a persistência dos dados.
+
+### 🛠️ Tecnologias Utilizadas
+- **Linguagem:** Python 3.x
+- **Conceitos Aplicados:** Estruturas de controlo, manipulação de ficheiros, persistência de dados e lógica funcional.
+
+---
+
+**Academic Project @ UAveiro** | **Developers:** Toni Correia & Daniel Vieira
